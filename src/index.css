@@ -1,0 +1,325 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #071123;
+  --color-brand-secondary: #dde6ee;
+  --color-brand-accent: #0065d2;
+  --color-brand-bg: #f9fcff;
+  --color-brand-text: #02102b;
+  --color-brand-muted: #656e80;
+  --color-brand-navy: #1a2f4f;
+  --color-brand-deep: #081938;
+  --color-brand-green: #00843d;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+html.lang-ar,
+html.lang-ar body {
+  font-family: "Cairo", "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --brand: #0065d2;
+  --brand-light: #38bdf8;
+  --brand-sky: #b8e6fe;
+  --navy: #1a2f4f;
+  --navy-deep: #081938;
+  --muted-foreground: #656e80;
+  --border: #dde6ee;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-text);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+.text-muted-foreground {
+  color: var(--muted-foreground);
+}
+
+.bg-grid {
+  background-size: 48px 48px;
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--brand) 10%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--brand) 10%, transparent) 1px,
+      transparent 1px
+    );
+}
+
+@keyframes footer-wave-drift {
+  0%,
+  to {
+    transform: translate(0);
+  }
+  50% {
+    transform: translate(-25%);
+  }
+}
+
+@keyframes footer-wave-drift-slow {
+  0%,
+  to {
+    transform: translate(-12%);
+  }
+  50% {
+    transform: translate(0);
+  }
+}
+
+.footer-wave-drift {
+  animation: 16s ease-in-out infinite footer-wave-drift;
+}
+
+.footer-wave-drift-slow {
+  animation: 24s ease-in-out infinite footer-wave-drift-slow;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-wave-drift,
+  .footer-wave-drift-slow {
+    animation: none;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.7s ease-out 0.15s both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.7s ease-out 0.3s both;
+}
+
+.animate-float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+@keyframes about-hero-ken {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.about-hero-media {
+  transform: scale(1.04);
+  animation: about-hero-ken 18s ease-out forwards;
+}
+
+/* Scroll-triggered fade-in-up (used by <Reveal />) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-fade-up,
+  .animate-fade-up-delay,
+  .animate-fade-up-delay-2,
+  .animate-float-soft,
+  .about-hero-media {
+    animation: none;
+  }
+
+  .about-hero-media {
+    transform: none;
+  }
+}
+
+.section-shell {
+  margin-inline: auto;
+  max-width: 80rem;
+  padding-inline: 1.5rem;
+}
+
+.section-y {
+  padding-block: 4rem;
+}
+
+.section-gap {
+  margin-top: 2rem;
+}
+
+.section-hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
+}
+
+.section-split {
+  display: grid;
+  gap: 2rem;
+}
+
+.section-split-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-prose {
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--brand-light) 100%);
+}
+
+.shadow-elegant {
+  box-shadow: 0 1px 2px rgba(8, 25, 56, 0.14), 0 20px 50px -20px rgba(0, 101, 210, 0.35);
+}
+
+.glass {
+  background: color-mix(in oklab, white 70%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid color-mix(in oklab, white 60%, transparent);
+}
+
+.section-card {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  border-radius: 1.5rem;
+  border: 1px solid var(--border);
+  background: white;
+  box-shadow: 0 1px 2px rgba(8, 25, 56, 0.14), 0 20px 50px -20px rgba(0, 101, 210, 0.35);
+}
+
+.media-frame {
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid var(--border);
+  background: white;
+  box-shadow: 0 1px 2px rgba(8, 25, 56, 0.14), 0 20px 50px -20px rgba(0, 101, 210, 0.35);
+}
+
+.media-frame img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-position: center;
+}
+
+.media-frame--hero {
+  height: 220px;
+}
+
+.contact-input {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.contact-input:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand) 18%, transparent);
+}
+
+.contact-soft-input {
+  width: 100%;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 0.85rem;
+  padding: 0.9rem 1rem;
+  font-size: 0.875rem;
+  color: #171717;
+  outline: none;
+  transition:
+    background-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.contact-soft-input::placeholder {
+  color: #a3a3a3;
+}
+
+.contact-soft-input:focus {
+  background: #eceef1;
+  box-shadow: 0 0 0 2px rgba(23, 23, 23, 0.08);
+}
+
+@media (min-width: 1024px) {
+  .section-y {
+    padding-block: 5rem;
+  }
+  .section-hero {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+  }
+  .section-split {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+  }
+  .media-frame--hero {
+    height: 300px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .media-frame--hero {
+    height: 260px;
+  }
+}

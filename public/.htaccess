@@ -1,0 +1,12 @@
+DirectoryIndex index.html
+
+# Serve the SPA for client-side routes (e.g. /about, /contact).
+# Without this, Apache returns 500 when ErrorDocument is misconfigured.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
