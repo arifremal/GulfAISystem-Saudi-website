@@ -69,18 +69,15 @@ export function AboutVisionSection() {
         <div className="section-gap grid gap-5 md:grid-cols-3 md:gap-6">
           {cards.map((card, i) => {
             const Icon = visionIcons[i % visionIcons.length]
+            const accent = i % 2 === 1
             return (
               <Reveal key={card.titleKey} className="h-full">
-                <article className="group flex h-full flex-col rounded-3xl border border-white/70 bg-white/65 p-6 text-center shadow-[0_12px_40px_rgba(15,38,80,0.08)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-[color:var(--brand)]/25 hover:bg-white/80 md:p-7">
-                  <div className="mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-[color:var(--brand)]/10 to-[color:var(--brand-sky)]/30 text-[color:var(--brand)]">
+                <article className={`${accent ? 'card-oa-accent' : 'card-oa'} card-oa-center`}>
+                  <div className="card-oa-icon">
                     <Icon className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <h3 className="mt-5 text-base font-bold text-[color:var(--navy-deep)] md:text-lg">
-                    {t(card.titleKey)}
-                  </h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
-                    {t(card.descKey)}
-                  </p>
+                  <h3 className="card-oa-title">{t(card.titleKey)}</h3>
+                  <p className="card-oa-desc">{t(card.descKey)}</p>
                 </article>
               </Reveal>
             )

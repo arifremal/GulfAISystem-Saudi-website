@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react'
+import { industries, servicePages, services } from '../data/content'
 import { useLanguage } from '../i18n'
 import { Reveal } from './Reveal'
 
@@ -10,28 +11,22 @@ const WHATSAPP_URL = `https://wa.me/${WHATSAPP_AU.replace('+', '')}`
 const EMAIL = 'info@gulfaisystems.com.sa'
 const GLOBAL_AI_URL = 'https://globalaigroup.com.au/'
 
-const navLinks = [
-  { labelKey: 'footer.nav.home', href: '/' },
-  { labelKey: 'footer.nav.about', href: '/about' },
-  { labelKey: 'footer.nav.contact', href: '/contact' },
-  { labelKey: 'footer.nav.reviews', href: '/#reviews' },
-] as const
-
-const quickLinks = [
-  { labelKey: 'footer.quick.contact', href: '/contact' },
-  { labelKey: 'footer.quick.faqs', href: '/contact' },
-  { labelKey: 'footer.quick.services', href: '/#services' },
-  { labelKey: 'footer.quick.about', href: '/about' },
-] as const
-
-const serviceLinks = [
-  { labelKey: 'footer.service.rfq', href: '#services' },
-  { labelKey: 'footer.service.erp', href: '#services' },
-  { labelKey: 'footer.service.procurement', href: '#services' },
-  { labelKey: 'footer.service.finance', href: '#services' },
-  { labelKey: 'footer.service.agents', href: '#services' },
-  { labelKey: 'footer.service.knowledge', href: '#services' },
-] as const
+function ArrowUpRightIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M7 17 17 7M7 7h10v10" />
+    </svg>
+  )
+}
 
 function GlobeIcon({ className }: { className?: string }) {
   return (
@@ -104,6 +99,116 @@ function WhatsAppIcon({ className }: { className?: string }) {
   )
 }
 
+function FooterAtmosphere() {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* Base multi-layer gradient */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `
+            linear-gradient(145deg, #0E2348 0%, #123B7A 48%, #0E2348 100%),
+            radial-gradient(ellipse 90% 70% at 0% 0%, rgba(37, 99, 235, 0.28), transparent 55%),
+            radial-gradient(ellipse 80% 60% at 100% 100%, rgba(56, 189, 248, 0.16), transparent 50%)
+          `,
+          backgroundBlendMode: 'normal, soft-light, soft-light',
+        }}
+      />
+
+      {/* Soft mesh light */}
+      <div
+        className="footer-mesh-shift absolute inset-0 opacity-[0.08]"
+        style={{
+          background: `
+            radial-gradient(circle at 20% 30%, rgba(96, 165, 250, 0.9), transparent 28%),
+            radial-gradient(circle at 78% 20%, rgba(56, 189, 248, 0.7), transparent 26%),
+            radial-gradient(circle at 55% 75%, rgba(37, 99, 235, 0.75), transparent 32%)
+          `,
+        }}
+      />
+
+      {/* Floating blurred orbs */}
+      <div
+        className="footer-orb-float absolute -top-28 -start-20 h-[26rem] w-[26rem] rounded-full opacity-[0.09] blur-3xl"
+        style={{
+          background: 'radial-gradient(circle, #60A5FA 0%, transparent 70%)',
+        }}
+      />
+      <div
+        className="footer-orb-float-alt absolute -bottom-32 -end-16 h-[24rem] w-[24rem] rounded-full opacity-[0.08] blur-3xl"
+        style={{
+          background: 'radial-gradient(circle, #38BDF8 0%, transparent 70%)',
+        }}
+      />
+      <div
+        className="footer-glow-pulse absolute top-1/3 start-1/2 h-64 w-64 -translate-x-1/2 rounded-full opacity-[0.06] blur-3xl"
+        style={{
+          background: 'radial-gradient(circle, #2563EB 0%, transparent 70%)',
+        }}
+      />
+
+      {/* Flowing wave layers */}
+      <svg
+        viewBox="0 0 1440 220"
+        preserveAspectRatio="none"
+        className="footer-wave-drift-slow absolute inset-x-0 bottom-0 h-40 w-[200%] max-w-none opacity-[0.07] md:h-52"
+      >
+        <path
+          d="M0,120 C240,180 480,60 720,110 C960,160 1200,70 1440,120 L1440,220 L0,220 Z"
+          fill="#60A5FA"
+        />
+      </svg>
+      <svg
+        viewBox="0 0 1440 180"
+        preserveAspectRatio="none"
+        className="footer-wave-drift absolute inset-x-0 bottom-0 h-32 w-[200%] max-w-none opacity-[0.06] md:h-44"
+      >
+        <path
+          d="M0,90 C280,20 520,150 720,100 C920,50 1160,140 1440,80 L1440,180 L0,180 Z"
+          fill="#38BDF8"
+        />
+      </svg>
+
+      {/* Abstract curved accent */}
+      <svg
+        viewBox="0 0 800 600"
+        className="absolute -top-10 end-0 h-[28rem] w-[28rem] opacity-[0.06]"
+      >
+        <ellipse cx="520" cy="180" rx="280" ry="160" fill="none" stroke="#93C5FD" strokeWidth="1.2" />
+        <ellipse cx="540" cy="200" rx="220" ry="120" fill="none" stroke="#60A5FA" strokeWidth="1" />
+        <path
+          d="M180 420 C320 280, 480 500, 680 340"
+          fill="none"
+          stroke="#38BDF8"
+          strokeWidth="1.2"
+        />
+      </svg>
+
+      {/* Subtle geometric pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.045]"
+        style={{
+          backgroundImage: `
+            linear-gradient(30deg, transparent 48%, rgba(147, 197, 253, 0.55) 49%, rgba(147, 197, 253, 0.55) 51%, transparent 52%),
+            linear-gradient(-30deg, transparent 48%, rgba(96, 165, 250, 0.4) 49%, rgba(96, 165, 250, 0.4) 51%, transparent 52%)
+          `,
+          backgroundSize: '72px 72px',
+          maskImage: 'radial-gradient(ellipse at 70% 40%, black 10%, transparent 68%)',
+        }}
+      />
+
+      {/* Soft top glow ribbon */}
+      <div
+        className="footer-glow-pulse absolute inset-x-0 top-0 h-28"
+        style={{
+          background:
+            'linear-gradient(90deg, rgba(18, 59, 122, 0.15), rgba(37, 99, 235, 0.22), rgba(56, 189, 248, 0.18), rgba(18, 59, 122, 0.15))',
+        }}
+      />
+    </div>
+  )
+}
+
 function FooterColumn({
   title,
   children,
@@ -113,64 +218,63 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="text-sm font-bold text-[color:var(--brand)]">{title}</h3>
-      <ul className="mt-5 space-y-3">{children}</ul>
+      <h3 className="text-[0.7rem] font-semibold tracking-[0.16em] text-white uppercase">
+        {title}
+      </h3>
+      <ul className="mt-6 space-y-3.5">{children}</ul>
     </div>
   )
 }
 
-function FooterLink({ href, children }: { href: string; children: ReactNode }) {
+function FooterLink({
+  href,
+  children,
+  external,
+}: {
+  href: string
+  children: ReactNode
+  external?: boolean
+}) {
   return (
     <li>
       <a
         href={href}
-        className="text-sm text-[color:var(--navy-deep)]/70 transition-colors hover:text-[color:var(--brand)]"
+        {...(external
+          ? { target: '_blank', rel: 'noopener noreferrer' }
+          : {})}
+        className="group inline-flex items-center gap-1.5 text-sm text-[#C8D4E6] transition-colors duration-200 hover:text-white"
       >
-        {children}
+        <span className="border-b border-transparent transition-[border-color] group-hover:border-white/35">
+          {children}
+        </span>
+        {external ? (
+          <ArrowUpRightIcon className="h-3 w-3 shrink-0 text-[#60A5FA] opacity-0 transition-opacity group-hover:opacity-80" />
+        ) : null}
       </a>
     </li>
   )
 }
 
-function FooterWaves() {
+function SocialIconButton({
+  href,
+  label,
+  children,
+  external,
+}: {
+  href: string
+  label: string
+  children: ReactNode
+  external?: boolean
+}) {
   return (
-    <div
-      className="pointer-events-none absolute inset-x-0 top-0 -translate-y-[calc(100%-1px)] overflow-hidden"
-      aria-hidden
+    <a
+      href={href}
+      aria-label={label}
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/[0.07] text-[#60A5FA] shadow-[0_4px_16px_-6px_rgba(37,99,235,0.45)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#60A5FA]/45 hover:bg-[#2563EB]/20 hover:shadow-[0_8px_24px_-8px_rgba(56,189,248,0.55)]"
     >
-      <div className="relative h-16 md:h-24">
-        <svg
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          className="footer-wave-drift-slow absolute bottom-0 start-0 h-full w-[200%] max-w-none opacity-60"
-        >
-          <path
-            d="M0,64 C320,110 520,20 720,52 C920,84 1120,28 1440,64 L1440,120 L0,120 Z"
-            fill="color-mix(in oklab, var(--brand-light) 45%, white)"
-          />
-        </svg>
-        <svg
-          viewBox="0 0 1440 120"
-          preserveAspectRatio="none"
-          className="footer-wave-drift absolute bottom-0 start-0 h-[88%] w-[200%] max-w-none opacity-75"
-        >
-          <path
-            d="M0,56 C280,8 480,96 720,64 C960,32 1160,104 1440,56 L1440,120 L0,120 Z"
-            fill="color-mix(in oklab, var(--brand-sky) 40%, white)"
-          />
-        </svg>
-        <svg
-          viewBox="0 0 1440 80"
-          preserveAspectRatio="none"
-          className="relative block h-12 w-full md:h-16"
-        >
-          <path
-            d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,40 L1440,80 L0,80 Z"
-            fill="color-mix(in oklab, var(--brand-sky) 32%, white)"
-          />
-        </svg>
-      </div>
-    </div>
+      {children}
+    </a>
   )
 }
 
@@ -179,166 +283,149 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer
-      id="contact"
-      className="relative overflow-hidden bg-gradient-to-br from-[color:var(--brand-sky)]/30 via-[color:var(--brand-light)]/20 to-white text-[color:var(--navy-deep)]"
-    >
-      <FooterWaves />
+    <footer id="contact" className="relative overflow-hidden text-white">
+      <FooterAtmosphere />
 
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-grid opacity-[0.35]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-24 end-0 h-80 w-80 rounded-full opacity-50 blur-3xl"
-        style={{
-          background: 'radial-gradient(circle, var(--brand-sky), transparent 68%)',
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -bottom-16 start-1/4 h-64 w-64 rounded-full opacity-40 blur-3xl"
-        style={{
-          background:
-            'radial-gradient(circle, var(--brand-light), transparent 70%)',
-        }}
-      />
-
-      <div className="relative mx-auto max-w-7xl px-4 pt-14 pb-10 sm:px-6 lg:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 pt-16 pb-10 sm:px-6 lg:px-8 lg:pt-20">
         <Reveal>
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          <div className="sm:col-span-2 lg:col-span-1">
-            <a href="/" className="inline-block">
-              <img
-                src="/assets/logo.webp"
-                alt={t('footer.logoAlt')}
-                width={256}
-                height={64}
-                loading="lazy"
-                decoding="async"
-                className="h-14 w-auto sm:h-16"
-              />
-            </a>
-            <p className="mt-3 text-lg font-bold text-[color:var(--brand)]">
-              {t('footer.brandName')}
-            </p>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
-              {t('footer.tagline')}
-            </p>
-            <a
-              href={GLOBAL_AI_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--brand)] transition-colors hover:text-[color:var(--navy-deep)]"
-            >
-              <GlobeIcon className="h-4 w-4 shrink-0" />
-              {t('footer.visitGlobal')}
-            </a>
-          </div>
-
-          <FooterColumn title={t('footer.col.navigation')}>
-            {navLinks.map((link) => (
-              <FooterLink key={link.labelKey} href={link.href}>
-                {t(link.labelKey)}
-              </FooterLink>
-            ))}
-          </FooterColumn>
-
-          <FooterColumn title={t('footer.col.quickLink')}>
-            {quickLinks.map((link) => (
-              <FooterLink key={link.labelKey} href={link.href}>
-                {t(link.labelKey)}
-              </FooterLink>
-            ))}
-          </FooterColumn>
-
-          <FooterColumn title={t('footer.col.services')}>
-            {serviceLinks.map((link) => (
-              <FooterLink key={link.labelKey} href={link.href}>
-                {t(link.labelKey)}
-              </FooterLink>
-            ))}
-          </FooterColumn>
-        </div>
-        </Reveal>
-
-        <Reveal delay={100}>
-        <div className="mt-12 flex flex-col gap-6 border-t border-[color:var(--brand)]/15 pt-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-3">
-            <div className="inline-flex items-center gap-2.5 text-sm text-[color:var(--navy-deep)]/80">
-              <MapPinIcon className="h-4 w-4 shrink-0 text-[color:var(--brand)]" />
-              {t('footer.location')}
+          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-12 lg:gap-10">
+            <div className="sm:col-span-2 lg:col-span-4">
+              <a href="/" className="inline-flex rounded-lg bg-white/95 px-3 py-2 shadow-sm">
+                <img
+                  src="/assets/logo.webp"
+                  alt={t('footer.logoAlt')}
+                  width={256}
+                  height={64}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-11 w-auto sm:h-12"
+                />
+              </a>
+              <p className="mt-4 text-base font-semibold text-white">
+                {t('footer.brandName')}
+              </p>
+              <p className="mt-3 max-w-sm text-sm leading-relaxed text-[#C8D4E6]">
+                {t('footer.tagline')}
+              </p>
+              <a
+                href={GLOBAL_AI_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-gradient-to-r from-[#123B7A]/70 via-[#2563EB]/45 to-[#38BDF8]/30 px-4 py-2.5 text-sm font-medium text-white shadow-[0_0_24px_-6px_rgba(56,189,248,0.55)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-[#60A5FA]/50 hover:shadow-[0_0_32px_-4px_rgba(96,165,250,0.7)]"
+              >
+                <GlobeIcon className="h-4 w-4 shrink-0 text-[#93C5FD]" />
+                {t('footer.visitGlobal')}
+                <ArrowUpRightIcon className="h-3.5 w-3.5 text-[#93C5FD] opacity-80" />
+              </a>
             </div>
-            <a
-              href={`tel:${PHONE}`}
-              className="inline-flex items-center gap-2.5 text-sm text-[color:var(--navy-deep)]/80 transition-colors hover:text-[color:var(--brand)]"
-            >
-              <PhoneIcon className="h-4 w-4 shrink-0 text-[color:var(--brand)]" />
-              {PHONE_DISPLAY}
-            </a>
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="inline-flex items-center gap-2.5 text-sm text-[color:var(--navy-deep)]/80 transition-colors hover:text-[color:var(--brand)]"
-            >
-              <WhatsAppIcon className="h-4 w-4 shrink-0 text-[#25D366]" />
-              {WHATSAPP_DISPLAY}
-            </a>
-            <a
-              href={`mailto:${EMAIL}`}
-              className="inline-flex items-center gap-2.5 break-all text-sm text-[color:var(--navy-deep)]/80 transition-colors hover:text-[color:var(--brand)]"
-            >
-              <MailIcon className="h-4 w-4 shrink-0 text-[color:var(--brand)]" />
-              {EMAIL}
-            </a>
-          </div>
 
-          <div className="flex items-center gap-3">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="grid h-9 w-9 place-items-center rounded-full border border-[color:var(--brand)]/20 bg-white/70 text-[#25D366] shadow-sm transition-colors hover:bg-[color:var(--brand)] hover:text-white"
-            >
-              <WhatsAppIcon className="h-4 w-4" />
-            </a>
-            <a
-              href={`tel:${PHONE}`}
-              aria-label="Phone"
-              className="grid h-9 w-9 place-items-center rounded-full border border-[color:var(--brand)]/20 bg-white/70 text-[color:var(--brand)] shadow-sm transition-colors hover:bg-[color:var(--brand)] hover:text-white"
-            >
-              <PhoneIcon className="h-4 w-4" />
-            </a>
-            <a
-              href={`mailto:${EMAIL}`}
-              aria-label="Email"
-              className="grid h-9 w-9 place-items-center rounded-full border border-[color:var(--brand)]/20 bg-white/70 text-[color:var(--brand)] shadow-sm transition-colors hover:bg-[color:var(--brand)] hover:text-white"
-            >
-              <MailIcon className="h-4 w-4" />
-            </a>
+            <div className="lg:col-span-2">
+              <FooterColumn title={t('footer.col.services')}>
+                {services.map((service) => (
+                  <FooterLink key={service.key} href={servicePages[service.key].path}>
+                    {t(`services.${service.key}.title`)}
+                  </FooterLink>
+                ))}
+              </FooterColumn>
+            </div>
+
+            <div className="lg:col-span-3">
+              <FooterColumn title={t('footer.col.industries')}>
+                {industries.map((industry) => (
+                  <FooterLink
+                    key={industry.id}
+                    href={
+                      industry.available && industry.href
+                        ? industry.href
+                        : '/#industries'
+                    }
+                    external={Boolean(industry.available && industry.href)}
+                  >
+                    {t(`industries.${industry.id}.title`)}
+                  </FooterLink>
+                ))}
+              </FooterColumn>
+            </div>
+
+            <div className="lg:col-span-3">
+              <FooterColumn title={t('footer.col.contact')}>
+                <li className="flex items-start gap-3 text-sm text-[#C8D4E6]">
+                  <MapPinIcon className="mt-0.5 h-4 w-4 shrink-0 text-[#60A5FA]" />
+                  <span>{t('footer.location')}</span>
+                </li>
+                <li>
+                  <a
+                    href={`tel:${PHONE}`}
+                    className="inline-flex items-center gap-3 text-sm text-[#C8D4E6] transition-colors hover:text-white"
+                  >
+                    <PhoneIcon className="h-4 w-4 shrink-0 text-[#60A5FA]" />
+                    {PHONE_DISPLAY}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 text-sm text-[#C8D4E6] transition-colors hover:text-white"
+                  >
+                    <WhatsAppIcon className="h-4 w-4 shrink-0 text-[#25D366]" />
+                    {WHATSAPP_DISPLAY}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`mailto:${EMAIL}`}
+                    className="inline-flex items-center gap-3 break-all text-sm text-[#C8D4E6] transition-colors hover:text-white"
+                  >
+                    <MailIcon className="h-4 w-4 shrink-0 text-[#60A5FA]" />
+                    {EMAIL}
+                  </a>
+                </li>
+              </FooterColumn>
+
+              <div className="mt-8 flex items-center gap-2.5">
+                <SocialIconButton href={WHATSAPP_URL} label="WhatsApp" external>
+                  <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
+                </SocialIconButton>
+                <SocialIconButton href={`tel:${PHONE}`} label="Phone">
+                  <PhoneIcon className="h-4 w-4" />
+                </SocialIconButton>
+                <SocialIconButton href={`mailto:${EMAIL}`} label="Email">
+                  <MailIcon className="h-4 w-4" />
+                </SocialIconButton>
+              </div>
+            </div>
           </div>
-        </div>
         </Reveal>
       </div>
 
-      <div className="relative overflow-hidden border-t border-[color:var(--brand)]/10 bg-[color:var(--brand-sky)]/15">
-        <svg
-          viewBox="0 0 1440 48"
-          preserveAspectRatio="none"
-          aria-hidden
-          className="footer-wave-drift-slow pointer-events-none absolute inset-x-0 -top-6 block h-6 w-[200%] max-w-none opacity-40 md:-top-8 md:h-8"
-        >
-          <path
-            d="M0,24 C360,44 540,4 720,22 C900,40 1080,6 1440,24 L1440,48 L0,48 Z"
-            fill="color-mix(in oklab, var(--brand-light) 35%, white)"
-          />
-        </svg>
-        <div className="relative mx-auto max-w-7xl px-4 py-6 text-center text-xs text-muted-foreground sm:px-6 lg:px-8">
-          {t('footer.copyright', { year })}
+      {/* Soft glowing divider */}
+      <div
+        aria-hidden
+        className="relative h-px w-full"
+        style={{
+          background:
+            'linear-gradient(90deg, transparent, rgba(96, 165, 250, 0.35), rgba(56, 189, 248, 0.5), rgba(96, 165, 250, 0.35), transparent)',
+          boxShadow: '0 0 12px rgba(56, 189, 248, 0.25)',
+        }}
+      />
+
+      <div
+        className="relative"
+        style={{
+          background: 'linear-gradient(180deg, rgba(18, 59, 122, 0.35), rgba(14, 35, 72, 0.55))',
+          backdropFilter: 'blur(10px)',
+        }}
+      >
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-6 text-center text-xs text-[#A8B8CC] sm:flex-row sm:px-6 sm:text-start lg:px-8">
+          <p>{t('footer.copyright', { year })}</p>
+          <a
+            href="/contact"
+            className="font-medium text-[#C8D4E6] transition-colors hover:text-white"
+          >
+            {t('nav.cta.contact')}
+          </a>
         </div>
       </div>
     </footer>

@@ -1,0 +1,7 @@
+/ai-capabilities/microsoft-copilot-training  /ai-training  301
+/ai-capabilities/ai-training                /ai-training  301
+/services/microsoft-copilot-training        /ai-training  301
+/services/ai-training                       /ai-training  301
+/services/private-ai-agents                 /ai-capabilities/private-ai-agents            301
+/services/operations-automation             /ai-capabilities/operations-automation        301
+/*    /index.html   200

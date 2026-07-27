@@ -7,13 +7,13 @@ export function Problem() {
   const [hoursLost, compliance, silos, competitors] = problemKeys
 
   return (
-    <section className="border-y border-brand-secondary bg-brand-bg py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-6">
+    <section className="section-y border-y border-brand-secondary bg-brand-bg">
+      <div className="section-shell">
         <Reveal className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-brand-primary md:text-4xl lg:text-5xl">
+          <h2 className="section-title mx-auto text-center lg:text-5xl">
             {t('problem.title')}
           </h2>
-          <p className="text-base leading-relaxed text-brand-muted md:text-lg">
+          <p className="section-subtitle mx-auto text-center">
             {t('problem.subtitle')}
           </p>
         </Reveal>

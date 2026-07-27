@@ -4,18 +4,19 @@ import {
   MapPin,
   ShieldCheck,
 } from 'lucide-react'
+import { AboutMomentsSection } from '../components/about/AboutMomentsSection'
 import { AboutPeopleSections } from '../components/about/AboutPeopleSections'
+import { AboutVision2030Section } from '../components/about/AboutVision2030Section'
 import { AboutVisionSection } from '../components/about/AboutVisionSection'
 import { AboutWhySection } from '../components/about/AboutWhySection'
 import { Reveal } from '../components/about/Reveal'
 import { useLanguage } from '../i18n'
 
 const whoPoints = [
-  { titleKey: 'about.who.1.title', descKey: 'about.who.1.desc' },
-  { titleKey: 'about.who.2.title', descKey: 'about.who.2.desc' },
-  { titleKey: 'about.who.3.title', descKey: 'about.who.3.desc' },
+  { titleKey: 'about.who.1.title', descKey: 'about.who.1.desc', icon: Globe2 },
+  { titleKey: 'about.who.2.title', descKey: 'about.who.2.desc', icon: MapPin },
+  { titleKey: 'about.who.3.title', descKey: 'about.who.3.desc', icon: ShieldCheck },
 ] as const
-const whoWeAreIcons = [Globe2, MapPin, ShieldCheck] as const
 
 export function AboutPage() {
   const { t } = useLanguage()
@@ -44,10 +45,6 @@ export function AboutPage() {
             </p>
             <h1 className="mt-4 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl">
               {t('about.hero.title')}
-              <span
-                className="ml-4 inline-block h-[3px] w-14 translate-y-[-0.15em] bg-[#1447E6] align-middle sm:w-20"
-                aria-hidden
-              />
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
               {t('about.hero.subtitle')}
@@ -55,57 +52,59 @@ export function AboutPage() {
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-[#1447E6] px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-[#0f38b8] sm:text-base"
+                className="btn-cta sm:text-base"
               >
                 {t('about.hero.ctaDemo')}
                 <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-              <a
-                href="/contact"
-                className="inline-flex items-center rounded-full border border-white/30 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition hover:border-white/50 hover:bg-white/15 sm:text-base"
-              >
-                {t('about.hero.ctaContact')}
               </a>
             </div>
           </Reveal>
         </div>
       </section>
 
+      <AboutMomentsSection />
+
       <AboutVisionSection />
 
       <section className="section-y relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-grid opacity-30 [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)]" />
-        <div className="section-shell section-split">
+        <div className="section-shell grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
           <Reveal className="h-full min-h-0">
-            <img
-              src="/assets/executive.png"
-              alt={t('about.who.imageAlt')}
-              className="h-full w-full rounded-3xl border border-brand-secondary object-cover shadow-elegant"
-            />
+            <div className="h-full min-h-[320px] overflow-hidden rounded-[1.5rem] border border-brand-secondary shadow-elegant sm:min-h-[420px] lg:min-h-full">
+              <img
+                src="/assets/executive.png"
+                alt={t('about.who.imageAlt')}
+                className="h-full w-full object-cover object-[center_18%]"
+                loading="lazy"
+              />
+            </div>
           </Reveal>
-          <Reveal className="section-split-col min-h-0">
-            <h2 className="text-3xl font-bold leading-tight text-[color:var(--navy-deep)] md:text-5xl">
-              {t('about.who.title')}
-            </h2>
-            <p className="mt-5 mobile-prose text-muted-foreground">{t('about.who.body')}</p>
-            <div className="mt-8 space-y-3">
-              {whoPoints.map((item, i) => {
-                const Icon = whoWeAreIcons[i % whoWeAreIcons.length]
+
+          <Reveal className="flex h-full min-h-0 flex-col justify-between gap-6 lg:gap-8">
+            <div>
+              <h2 className="text-3xl font-bold leading-tight text-[color:var(--navy-deep)] md:text-4xl lg:text-[2.5rem]">
+                {t('about.who.title')}
+              </h2>
+              <p className="mt-4 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                {t('about.who.body')}
+              </p>
+            </div>
+
+            <div className="flex flex-1 flex-col justify-end gap-4">
+              {whoPoints.map((item, index) => {
+                const Icon = item.icon
+                const accent = index % 2 === 1
                 return (
                   <div
                     key={item.titleKey}
-                    className="group flex items-start gap-3 rounded-2xl border border-[color:var(--brand)]/10 bg-white p-5 shadow-sm"
+                    className={`${accent ? 'card-oa-accent' : 'card-oa'} card-oa-row flex-1`}
                   >
-                    <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[color:var(--brand)] to-[color:var(--brand-light)] text-white">
+                    <div className="card-oa-icon">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </div>
                     <div className="min-w-0">
-                      <h3 className="text-sm font-bold text-[color:var(--navy-deep)]">
-                        {t(item.titleKey)}
-                      </h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                        {t(item.descKey)}
-                      </p>
+                      <h3 className="card-oa-title text-sm">{t(item.titleKey)}</h3>
+                      <p className="card-oa-desc text-sm">{t(item.descKey)}</p>
                     </div>
                   </div>
                 )
@@ -114,6 +113,8 @@ export function AboutPage() {
           </Reveal>
         </div>
       </section>
+
+      <AboutVision2030Section />
 
       <AboutWhySection />
 

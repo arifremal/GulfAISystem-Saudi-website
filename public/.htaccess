@@ -1,5 +1,24 @@
 DirectoryIndex index.html
 
+# Never cache HTML — hashed JS/CSS filenames change every deploy.
+# Stale index.html causes: "Failed to load module script... MIME type of text/html"
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+  </FilesMatch>
+
+  # Homepage is often DirectoryIndex, not a .html URL — cover both.
+  <If "%{REQUEST_URI} == '/'">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+  </If>
+
+  <FilesMatch "\.(js|css|woff2|webp|png|jpg|jpeg|svg|ico)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
 # Serve the SPA for client-side routes (e.g. /about, /contact).
 # Without this, Apache returns 500 when ErrorDocument is misconfigured.
 <IfModule mod_rewrite.c>

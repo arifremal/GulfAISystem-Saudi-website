@@ -1,25 +1,62 @@
-import { ArrowRight, Building2, Clock3, Globe2, Languages } from 'lucide-react'
+import { ArrowRight, Handshake, ShieldCheck } from 'lucide-react'
 import { useLanguage } from '../i18n'
 import { Reveal } from './Reveal'
 
-const stats = [
+function BilingualIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      className={className}
+      aria-hidden="true"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <text
+        x="3.5"
+        y="16.5"
+        fill="currentColor"
+        fontSize="11"
+        fontWeight="700"
+        fontFamily="Cairo, Poppins, sans-serif"
+      >
+        ع
+      </text>
+      <text
+        x="13"
+        y="16.5"
+        fill="currentColor"
+        fontSize="11"
+        fontWeight="700"
+        fontFamily="Poppins, sans-serif"
+      >
+        A
+      </text>
+      <path
+        d="M11.5 7v10"
+        stroke="currentColor"
+        strokeWidth="1.25"
+        strokeLinecap="round"
+        opacity="0.35"
+      />
+    </svg>
+  )
+}
+
+const valueTiles = [
   {
-    valueKey: 'proof.1.value',
-    labelKey: 'proof.1.label',
-    icon: Globe2,
-    featured: true,
+    titleKey: 'aboutIntro.value1.title',
+    descKey: 'aboutIntro.value1.desc',
+    icon: ShieldCheck,
   },
   {
-    valueKey: 'proof.2.value',
-    labelKey: 'proof.2.label',
-    icon: Clock3,
-    featured: false,
+    titleKey: 'aboutIntro.value2.title',
+    descKey: 'aboutIntro.value2.desc',
+    icon: BilingualIcon,
   },
   {
-    valueKey: 'proof.4.value',
-    labelKey: 'proof.4.label',
-    icon: Languages,
-    featured: false,
+    titleKey: 'aboutIntro.value3.title',
+    descKey: 'aboutIntro.value3.desc',
+    icon: Handshake,
   },
 ] as const
 
@@ -27,89 +64,59 @@ export function AboutIntro() {
   const { t } = useLanguage()
 
   return (
-    <section id="about-intro" className="bg-white py-20 md:py-28">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 lg:grid-cols-2 lg:gap-14">
-        {/* Left: image + overlay card */}
-        <Reveal className="relative">
-          <div className="overflow-hidden rounded-[2rem] shadow-[0_20px_50px_-20px_rgba(20,71,230,0.35)]">
-            <img
-              src="/assets/about-hero-team.webp"
-              alt={t('aboutIntro.imageAlt')}
-              className="h-[420px] w-full object-cover object-center md:h-[520px]"
-              loading="lazy"
-            />
-          </div>
-
-          <div className="absolute bottom-5 start-5 max-w-[240px] rounded-2xl border border-white/70 bg-white/95 p-4 shadow-lg backdrop-blur sm:bottom-8 sm:start-8 sm:max-w-[260px] sm:p-5">
-            <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#1447E6]/10 text-[#1447E6]">
-              <Building2 className="h-5 w-5" aria-hidden="true" />
+    <section id="about-intro" className="section-bg-white section-y">
+      <div className="section-shell">
+        <div className="grid items-stretch gap-10 lg:grid-cols-2 lg:gap-14">
+          {/* Left: team image framed to keep left-side people in view */}
+          <Reveal className="relative h-full min-h-0">
+            <div className="media-frame h-full !rounded-[1.75rem]">
+              <img
+                src="/assets/about-hero-team.webp"
+                alt={t('aboutIntro.imageAlt')}
+                className="h-[360px] w-full object-cover object-[28%_center] md:h-[460px] lg:h-full lg:min-h-[460px]"
+                loading="lazy"
+              />
             </div>
-            <h3 className="text-base font-bold text-brand-primary">
-              {t('aboutIntro.cardTitle')}
-            </h3>
-            <p className="mt-1.5 text-xs leading-relaxed text-brand-muted sm:text-sm">
-              {t('aboutIntro.cardDesc')}
-            </p>
-          </div>
-        </Reveal>
+          </Reveal>
 
-        {/* Right: content + stats */}
-        <Reveal delay={120}>
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#1447E6]">
-            {t('aboutIntro.eyebrow')}
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-brand-primary md:text-4xl lg:text-[2.75rem] lg:leading-tight">
-            {t('aboutIntro.title')}
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-brand-muted md:text-lg">
-            {t('aboutIntro.body')}
-          </p>
+          {/* Right: content */}
+          <Reveal delay={120} className="flex flex-col justify-center">
+            <p className="section-eyebrow">{t('aboutIntro.eyebrow')}</p>
+            <h2 className="section-title max-w-xl lg:text-[2.5rem]">
+              {t('aboutIntro.title')}
+            </h2>
+            <p className="section-subtitle max-w-lg">{t('aboutIntro.body')}</p>
 
-          <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {stats.map((stat) => {
-              const Icon = stat.icon
-              return (
-                <div
-                  key={stat.labelKey}
-                  className={`rounded-2xl p-4 text-center sm:p-5 ${
-                    stat.featured
-                      ? 'bg-[#1447E6] text-white shadow-lg shadow-[#1447E6]/30'
-                      : 'border border-[#1447E6]/10 bg-[#eef3ff] text-[#1447E6]'
-                  }`}
+            <a href="/about" className="btn-cta group mt-8 w-fit">
+              {t('aboutIntro.cta')}
+              <ArrowRight
+                className="h-4 w-4 transition group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5"
+                aria-hidden="true"
+              />
+            </a>
+          </Reveal>
+        </div>
+
+        {/* Full-width feature cards — wider, shorter enterprise proportions */}
+        <div className="mt-8 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:mt-10 lg:grid-cols-3 lg:gap-5">
+          {valueTiles.map((tile, index) => {
+            const Icon = tile.icon
+            const accent = index % 2 === 1
+            return (
+              <Reveal key={tile.titleKey} delay={160 + index * 60} className="h-full min-w-0">
+                <article
+                  className={`${accent ? 'card-oa-accent' : 'card-oa'} card-oa-center`}
                 >
-                  <Icon
-                    className={`mx-auto mb-3 h-6 w-6 ${
-                      stat.featured ? 'text-white' : 'text-[#1447E6]'
-                    }`}
-                    aria-hidden="true"
-                  />
-                  <p
-                    className={`text-2xl font-bold ${
-                      stat.featured ? 'text-white' : 'text-brand-primary'
-                    }`}
-                  >
-                    {t(stat.valueKey)}
-                  </p>
-                  <p
-                    className={`mt-1 text-xs font-medium leading-snug ${
-                      stat.featured ? 'text-white/85' : 'text-brand-muted'
-                    }`}
-                  >
-                    {t(stat.labelKey)}
-                  </p>
-                </div>
-              )
-            })}
-          </div>
-
-          <a
-            href="/about"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#1447E6] px-7 py-3.5 text-sm font-semibold text-white shadow transition hover:bg-[#0f38b8]"
-          >
-            {t('aboutIntro.cta')}
-            <ArrowRight className="h-4 w-4" aria-hidden="true" />
-          </a>
-        </Reveal>
+                  <div className="card-oa-icon">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="card-oa-title">{t(tile.titleKey)}</h3>
+                  <p className="card-oa-desc">{t(tile.descKey)}</p>
+                </article>
+              </Reveal>
+            )
+          })}
+        </div>
       </div>
     </section>
   )

@@ -120,17 +120,13 @@ export function Hero() {
             </h1>
 
             <div className="mt-10 flex items-center gap-3">
-              <button
-                type="button"
-                onClick={openConsultation}
-                className="inline-flex items-center rounded-full bg-[#1447E6] px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-[#0f38b8] sm:text-base"
-              >
+              <button type="button" onClick={openConsultation} className="btn-cta sm:text-base">
                 {t('hero.cta')}
               </button>
               <button
                 type="button"
                 onClick={openConsultation}
-                className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[#1447E6] text-white transition hover:bg-[#0f38b8]"
+                className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-[color:var(--cta)] text-white shadow-[0_8px_22px_-10px_rgba(20,71,230,0.55)] transition hover:bg-[color:var(--cta-hover)]"
                 aria-label={t('hero.aria.book')}
               >
                 <ArrowUpRight className="h-5 w-5" />

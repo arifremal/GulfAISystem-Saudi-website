@@ -27,3 +27,7 @@ gulf-bundle.js
 *.njsproj
 *.sln
 *.sw?
+
+# Local oversized media (over GitHub 100MB limit)
+public/assets/about/*.mp4
+

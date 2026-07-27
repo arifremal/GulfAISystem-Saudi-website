@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { ChevronDown } from 'lucide-react'
-import { industries, services } from '../data/content'
+import { ArrowRight, ChevronDown } from 'lucide-react'
+import { industries, servicePages, services } from '../data/content'
 import { useLanguage } from '../i18n'
+import { ConsultationModal } from './ConsultationModal'
 import { Icon } from './Icon'
 
 type NavChild = {
@@ -67,6 +68,7 @@ export function Header({ overlay = false }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false)
   const [desktopOpen, setDesktopOpen] = useState<string | null>(null)
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null)
+  const [consultOpen, setConsultOpen] = useState(false)
   const navRef = useRef<HTMLElement>(null)
 
   const navItems: NavItem[] = useMemo(
@@ -87,11 +89,9 @@ export function Header({ overlay = false }: HeaderProps) {
         href: '/#services',
         children: services.map((service) => ({
           label: t(`services.${service.key}.title`),
-          href: '/#services',
+          href: servicePages[service.key].path,
         })),
       },
-      { label: t('nav.howWeWork'), href: '/#approach' },
-      { label: t('nav.whyUs'), href: '/#why-us' },
       { label: t('nav.contact'), href: '/contact' },
     ],
     [t],
@@ -160,11 +160,11 @@ export function Header({ overlay = false }: HeaderProps) {
           />
         </a>
 
-        <nav ref={navRef} className="hidden items-center gap-8 text-sm font-medium lg:flex">
+        <nav ref={navRef} className="hidden items-center gap-6 text-sm font-medium lg:flex xl:gap-8">
           {navItems.map((item) => {
             if (!item.children) {
               return (
-                <a key={item.href} href={item.href} className={linkClass}>
+                <a key={item.href} href={item.href} className={`whitespace-nowrap ${linkClass}`}>
                   {item.label}
                 </a>
               )
@@ -181,7 +181,7 @@ export function Header({ overlay = false }: HeaderProps) {
               >
                 <button
                   type="button"
-                  className={`inline-flex items-center gap-1 ${linkClass}`}
+                  className={`inline-flex items-center gap-1 whitespace-nowrap ${linkClass}`}
                   aria-expanded={isOpen}
                   aria-haspopup="menu"
                   onClick={() =>
@@ -248,24 +248,14 @@ export function Header({ overlay = false }: HeaderProps) {
 
         <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher overlayLook={isOverlayLook} />
-          {isOverlayLook && (
-            <a
-              href="/#services"
-              className="hidden items-center rounded-full border border-white/40 px-5 py-2 text-sm font-medium text-white transition hover:bg-white/10 sm:inline-flex"
-            >
-              {t('nav.cta.services')}
-            </a>
-          )}
-          <a
-            href="/contact"
-            className={`hidden items-center rounded-full px-5 py-2.5 text-sm font-semibold shadow transition sm:inline-flex ${
-              isOverlayLook
-                ? 'bg-[#1447E6] text-white hover:bg-[#0f38b8]'
-                : 'bg-brand-accent text-white hover:bg-blue-700'
-            }`}
+          <button
+            type="button"
+            onClick={() => setConsultOpen(true)}
+            className="hidden items-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-[#38bdf8] via-[#1447E6] to-[#0065d2] px-4 py-2.5 text-sm font-semibold text-white shadow-[0_10px_28px_-12px_rgba(20,71,230,0.65)] transition hover:brightness-110 sm:inline-flex"
           >
-            {t('nav.cta.contact')}
-          </a>
+            {t('nav.cta.consult')}
+            <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+          </button>
           <button
             type="button"
             className={`inline-flex rounded-lg p-2 lg:hidden ${menuIconClass}`}
@@ -352,16 +342,22 @@ export function Header({ overlay = false }: HeaderProps) {
                 </div>
               )
             })}
-            <a
-              href="/contact"
-              className="mt-2 inline-flex items-center justify-center rounded-full bg-[#1447E6] px-5 py-2.5 text-sm font-semibold text-white"
-              onClick={() => setOpen(false)}
+            <button
+              type="button"
+              className="mt-2 inline-flex w-full items-center justify-center gap-1.5 whitespace-nowrap rounded-full bg-gradient-to-r from-[#38bdf8] via-[#1447E6] to-[#0065d2] px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_28px_-12px_rgba(20,71,230,0.65)] transition hover:brightness-110"
+              onClick={() => {
+                setOpen(false)
+                setConsultOpen(true)
+              }}
             >
-              {t('nav.cta.contact')}
-            </a>
+              {t('nav.cta.consult')}
+              <ArrowRight className="h-3.5 w-3.5 rtl:rotate-180" aria-hidden="true" />
+            </button>
           </nav>
         </div>
       )}
+
+      <ConsultationModal open={consultOpen} onClose={() => setConsultOpen(false)} />
     </header>
   )
 }

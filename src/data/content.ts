@@ -44,11 +44,83 @@ export const industries = [
 
 export const serviceKeys = ['training', 'agents', 'ops'] as const
 
+export type ServicePageKey = (typeof serviceKeys)[number]
+
 export const services = [
   { key: 'training' as const, icon: 'training' as const },
   { key: 'agents' as const, icon: 'agents' as const },
   { key: 'ops' as const, icon: 'ops' as const },
 ]
+
+/** Dedicated AI capability landing pages */
+export const servicePages: Record<
+  ServicePageKey,
+  {
+    slug: string
+    path: string
+    heroImage: string
+    howImage: string
+    benefitsImage: string
+    chooseImage: string
+    ctaImage: string
+  }
+> = {
+  training: {
+    slug: 'ai-training',
+    path: '/ai-training',
+    heroImage: '/assets/services/service-copilot-1.png',
+    howImage: '/assets/services/service-ai-training-how.png',
+    benefitsImage: '/assets/services/service-copilot-2.png',
+    chooseImage: '/assets/services/why-gulf-ai-systems.png',
+    ctaImage: '/assets/services/service-copilot-3.png',
+  },
+  agents: {
+    slug: 'private-ai-agents',
+    path: '/ai-capabilities/private-ai-agents',
+    heroImage: '/assets/services/service-agents-1.png',
+    howImage: '/assets/services/service-agents-how.png',
+    benefitsImage: '/assets/services/service-agents-benefits.png',
+    chooseImage: '/assets/services/why-gulf-ai-systems.png',
+    ctaImage: '/assets/services/service-agents-3.png',
+  },
+  ops: {
+    slug: 'operations-automation',
+    path: '/ai-capabilities/operations-automation',
+    heroImage: '/assets/services/service-ops-1.png',
+    howImage: '/assets/services/service-ops-how.png',
+    benefitsImage: '/assets/services/service-ops-benefits.png',
+    chooseImage: '/assets/services/why-gulf-ai-systems.png',
+    ctaImage: '/assets/services/service-ops-3.png',
+  },
+}
+
+/** Map legacy service URLs to current paths (SEO / bookmarks). */
+export function resolveServicePathname(pathname: string): string {
+  const normalized = pathname.replace(/\/$/, '') || '/'
+  const legacyTrainingPaths = [
+    '/ai-training',
+    '/ai-capabilities/microsoft-copilot-training',
+    '/ai-capabilities/ai-training',
+    '/services/microsoft-copilot-training',
+    '/services/ai-training',
+  ]
+  if (legacyTrainingPaths.includes(normalized) || normalized === servicePages.training.path) {
+    return servicePages.training.path
+  }
+  for (const config of Object.values(servicePages)) {
+    if (normalized === `/services/${config.slug}`) return config.path
+    if (normalized === `/ai-capabilities/${config.slug}`) return config.path
+  }
+  return normalized
+}
+
+export function getServiceKeyFromPath(pathname: string): ServicePageKey | null {
+  const normalized = resolveServicePathname(pathname)
+  const entry = (Object.entries(servicePages) as [ServicePageKey, (typeof servicePages)[ServicePageKey]][]).find(
+    ([, config]) => config.path === normalized,
+  )
+  return entry?.[0] ?? null
+}
 
 export const approachSteps = [
   { step: 1, key: '1' as const },

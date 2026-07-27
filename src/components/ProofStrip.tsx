@@ -11,7 +11,7 @@ export function ProofStrip() {
         <div className="grid grid-cols-2 gap-8 text-center md:grid-cols-4">
           {proofStatKeys.map((key, index) => (
             <Reveal key={key} delay={index * 80}>
-              <p className="text-3xl font-extrabold text-brand-accent md:text-4xl">
+              <p className="text-3xl font-extrabold text-[#1447E6] md:text-4xl">
                 {t(`proof.${key}.value`)}
               </p>
               <p className="mt-1 text-sm text-brand-muted">{t(`proof.${key}.label`)}</p>

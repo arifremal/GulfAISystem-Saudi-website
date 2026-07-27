@@ -105,54 +105,31 @@ export function AboutWhySection() {
   const { t } = useLanguage()
 
   return (
-    <section className="section-y relative overflow-hidden">
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-20"
-        style={{
-          background:
-            'linear-gradient(180deg, color-mix(in oklab, var(--brand-sky) 18%, white) 0%, white 55%, color-mix(in oklab, var(--brand-sky) 12%, white) 100%)',
-        }}
-      />
-      <div className="absolute inset-0 -z-10 bg-grid opacity-25 [mask-image:radial-gradient(ellipse_at_top,black,transparent_72%)]" />
+    <section className="section-y section-bg-oa relative overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-grid opacity-20 [mask-image:radial-gradient(ellipse_at_top,black,transparent_72%)]" />
 
       <div className="section-shell relative z-10">
         <Reveal>
           <div className="max-w-3xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">
-              {t('about.why.eyebrow')}
-            </p>
-            <h2 className="mt-3 text-3xl font-bold leading-tight text-[color:var(--navy-deep)] md:text-5xl">
-              {t('about.why.title')}
-            </h2>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-              {t('about.why.subtitle')}
-            </p>
+            <p className="section-eyebrow">{t('about.why.eyebrow')}</p>
+            <h2 className="section-title md:text-5xl">{t('about.why.title')}</h2>
+            <p className="section-subtitle">{t('about.why.subtitle')}</p>
           </div>
         </Reveal>
 
-        <div className="section-gap grid gap-4 sm:grid-cols-2 xl:grid-cols-3 xl:gap-5">
-          {items.map((item, i) => (
-            <Reveal key={item.titleKey} delay={i * 60} className="h-full">
-              <article className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[color:var(--brand)]/10 bg-white/80 p-6 shadow-[0_10px_36px_rgba(8,25,56,0.06)] backdrop-blur-sm transition duration-300 hover:-translate-y-1 hover:border-[color:var(--brand)]/25 hover:shadow-[0_18px_44px_rgba(0,101,210,0.12)] md:p-7">
-                <div
-                  aria-hidden
-                  className={`absolute -end-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br ${item.accent} opacity-[0.08] blur-2xl transition duration-300 group-hover:opacity-20`}
-                />
-                <div
-                  className={`relative grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br ${item.accent} text-white shadow-[0_10px_24px_rgba(0,101,210,0.28)]`}
-                >
-                  {item.icon}
-                </div>
-                <h3 className="relative mt-5 text-base font-bold text-[color:var(--navy-deep)] md:text-lg">
-                  {t(item.titleKey)}
-                </h3>
-                <p className="relative mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {t(item.descKey)}
-                </p>
-              </article>
-            </Reveal>
-          ))}
+        <div className="section-gap grid gap-5 sm:grid-cols-2 xl:grid-cols-3 xl:gap-6">
+          {items.map((item, i) => {
+            const accent = i % 2 === 1
+            return (
+              <Reveal key={item.titleKey} delay={i * 60} className="h-full">
+                <article className={`${accent ? 'card-oa-accent' : 'card-oa'} card-oa-center`}>
+                  <div className="card-oa-icon">{item.icon}</div>
+                  <h3 className="card-oa-title">{t(item.titleKey)}</h3>
+                  <p className="card-oa-desc">{t(item.descKey)}</p>
+                </article>
+              </Reveal>
+            )
+          })}
         </div>
       </div>
     </section>

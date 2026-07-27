@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ChevronDown, ChevronRight } from 'lucide-react'
-import { services } from '../data/content'
+import { services, servicePages } from '../data/content'
 import { useLanguage } from '../i18n'
 import { Icon } from './Icon'
 import { Reveal } from './Reveal'
@@ -82,7 +82,7 @@ export function Services() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden border-y border-brand-secondary bg-white py-20 md:py-28"
+      className="section-bg-mesh section-y relative overflow-hidden border-y border-brand-secondary"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
       onFocusCapture={() => setIsPaused(true)}
@@ -92,18 +92,17 @@ export function Services() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 bg-grid opacity-[0.18]"
+        className="pointer-events-none absolute inset-0 bg-grid opacity-[0.16]"
         style={{
           maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 75%)',
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-6">
+      <div className="section-shell relative">
         <Reveal className="mb-12 max-w-3xl">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-brand-primary md:text-4xl">
-            {t('services.title')}
-          </h2>
-          <p className="text-lg text-brand-muted">{t('services.subtitle')}</p>
+          <p className="section-eyebrow">{t('nav.services')}</p>
+          <h2 className="section-title">{t('services.title')}</h2>
+          <p className="section-subtitle">{t('services.subtitle')}</p>
         </Reveal>
 
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
@@ -171,6 +170,13 @@ export function Services() {
                             </li>
                           ))}
                         </ul>
+                        <a
+                          href={servicePages[service.key].path}
+                          className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[#1447E6] transition hover:underline"
+                        >
+                          {t('services.learnMore')}
+                          <ChevronRight className="h-4 w-4 rtl:rotate-180" aria-hidden="true" />
+                        </a>
                       </div>
                     </div>
                   </div>

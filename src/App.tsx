@@ -11,20 +11,34 @@ import { AuditCta } from './components/AuditCta'
 import { Footer } from './components/Footer'
 import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
+import { ServicePage } from './pages/ServicePage'
 import { ChatWidget } from './components/ChatWidget'
+import { getServiceKeyFromPath, resolveServicePathname } from './data/content'
 
 export default function App() {
-  const pathname = window.location.pathname.replace(/\/$/, '') || '/'
+  const rawPathname = window.location.pathname.replace(/\/$/, '') || '/'
+  const pathname = resolveServicePathname(rawPathname)
+  if (pathname !== rawPathname) {
+    window.history.replaceState(
+      null,
+      '',
+      `${pathname}${window.location.search}${window.location.hash}`,
+    )
+  }
   const isAboutPage = pathname === '/about'
   const isContactPage = pathname === '/contact'
+  const serviceKey = getServiceKeyFromPath(pathname)
+  const isServicePage = Boolean(serviceKey)
 
   return (
     <div className="min-h-screen bg-brand-bg text-brand-text antialiased">
-      <Header overlay={!isContactPage} />
+      <Header overlay />
       {isAboutPage ? (
         <AboutPage />
       ) : isContactPage ? (
         <ContactPage />
+      ) : isServicePage && serviceKey ? (
+        <ServicePage service={serviceKey} />
       ) : (
         <main>
           <Hero />
@@ -37,7 +51,7 @@ export default function App() {
           <WhyUs />
         </main>
       )}
-      <AuditCta />
+      {!isContactPage && !isServicePage && <AuditCta />}
       <Footer />
       <ChatWidget />
     </div>
