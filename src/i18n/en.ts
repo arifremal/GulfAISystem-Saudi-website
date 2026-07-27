@@ -247,7 +247,7 @@ export const en: TranslationDict = {
   'contact.info.hoursTitle': 'Business Hours',
   'contact.info.hoursWeekdayLabel': 'Sunday – Thursday',
   'contact.info.hoursWeekdayTime': '9:00 AM – 6:00 PM',
-  'contact.info.hoursFridayLabel': 'Friday',
+  'contact.info.hoursFridayLabel': 'Friday and Saturday',
   'contact.info.hoursFridayValue': 'Closed',
   'contact.info.hoursNote': 'We typically respond within one business day.',
   'contact.info.officeTitle': 'Office',
@@ -256,7 +256,7 @@ export const en: TranslationDict = {
   'contact.info.officeLine3': 'King Abdul Aziz Road',
   'contact.info.officeLine4': 'Jeddah 21499',
   'contact.info.hoursWeekday': 'Sun to Thu: 9am to 6pm',
-  'contact.info.hoursFriday': 'Friday: Closed',
+  'contact.info.hoursFriday': 'Friday and Saturday: Closed',
 
   'contact.why.eyebrow': 'Why Contact Us',
   'contact.why.title': 'Why Contact Gulf AI Systems',

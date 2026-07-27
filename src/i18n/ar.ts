@@ -235,7 +235,7 @@ export const ar: TranslationDict = {
   'contact.info.hoursTitle': 'ساعات العمل',
   'contact.info.hoursWeekdayLabel': 'الأحد – الخميس',
   'contact.info.hoursWeekdayTime': '9:00 ص – 6:00 م',
-  'contact.info.hoursFridayLabel': 'الجمعة',
+  'contact.info.hoursFridayLabel': 'الجمعة والسبت',
   'contact.info.hoursFridayValue': 'مغلق',
   'contact.info.hoursNote': 'نرد عادةً خلال يوم عمل واحد.',
   'contact.info.officeTitle': 'المكتب',
@@ -244,7 +244,7 @@ export const ar: TranslationDict = {
   'contact.info.officeLine3': 'طريق الملك عبد العزيز',
   'contact.info.officeLine4': 'جدة 21499',
   'contact.info.hoursWeekday': 'الأحد إلى الخميس: 9ص إلى 6م',
-  'contact.info.hoursFriday': 'الجمعة: مغلق',
+  'contact.info.hoursFriday': 'الجمعة والسبت: مغلق',
 
   'contact.why.eyebrow': 'لماذا تتواصل معنا',
   'contact.why.title': 'لماذا تتواصل مع جلف إيه آي سيستمز',

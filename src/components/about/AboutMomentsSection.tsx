@@ -6,27 +6,27 @@ import { Reveal } from './Reveal'
 const MEDIA = {
   /* Left Top Team Image */
   leftTop: {
-    src: '/assets/about/P1141317-Edit.jpg',
+    src: '/assets/about/collab-event-01.webp',
     altKey: 'about.moments.leftTopAlt',
   },
   /* Left Bottom Event Image */
   leftBottom: {
-    src: '/assets/about/DSC_0132.jpg',
+    src: '/assets/about/collab-event-02.png',
     altKey: 'about.moments.leftBottomAlt',
   },
   /* Centre Company Video */
   video: {
     src: '/assets/about/about-us-video.mp4',
-    poster: '/assets/about/20260622_190159.png',
+    poster: '/assets/about/video-thumbnail.png',
   },
   /* Right Top Partnership Image */
   rightTop: {
-    src: '/assets/about/20260622_190159.png',
+    src: '/assets/about/collab-event-10.webp',
     altKey: 'about.moments.rightTopAlt',
   },
   /* Right Bottom Team Moment Image */
   rightBottom: {
-    src: '/assets/about/group.jpg',
+    src: '/assets/about/collab-event-11.png',
     altKey: 'about.moments.rightBottomAlt',
   },
 } as const
