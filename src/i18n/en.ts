@@ -1,8 +1,10 @@
 import type { TranslationDict } from './types'
+import { eventsEn } from './events-en'
 import { servicePagesEn } from './service-pages-en'
 
 export const en: TranslationDict = {
   ...servicePagesEn,
+  ...eventsEn,
 
   // Nav
   'nav.about': 'About Us',
@@ -26,8 +28,8 @@ export const en: TranslationDict = {
 
   // Hero
   'hero.slide1.tab': 'TRUSTED PARTNER',
-  'hero.slide1.line1': 'Your Trusted',
-  'hero.slide1.line2': 'AI Partner in KSA',
+  'hero.slide1.line1': 'Enterprise AI Solutions',
+  'hero.slide1.line2': 'for Saudi Businesses',
   'hero.slide2.tab': 'AI TRAINING',
   'hero.slide2.line1': 'AI Training',
   'hero.slide2.line2': 'For Modern Teams',
@@ -36,6 +38,11 @@ export const en: TranslationDict = {
   'hero.slide3.line2': 'Procurement & Finance',
   'hero.cta': 'Free Consultation',
   'hero.aria.book': 'Book consultation',
+
+  // Home SEO
+  'home.meta.title': 'Enterprise AI Solutions for Saudi Businesses | Gulf AI Systems',
+  'home.meta.description':
+    'Enterprise AI, private agents, ERP and automation solutions for Saudi businesses. Improve operations with Gulf AI Systems.',
 
   // Proof
   // Proof strip — static value cards (not stats)
@@ -53,13 +60,13 @@ export const en: TranslationDict = {
   'aboutIntro.eyebrow': 'About us',
   'aboutIntro.title': 'An Australian AI Company Operating in Saudi Arabia',
   'aboutIntro.body':
-    'Gulf AI Systems is part of Global AI Group, an Australian-founded technology company delivering secure AI, intelligent automation, private AI infrastructure, and enterprise software solutions for organisations in Saudi Arabia.',
+    'Gulf AI Systems is part of Global AI Group, an Australian founded technology company delivering secure AI, intelligent automation, private AI infrastructure, and enterprise software solutions for organisations in Saudi Arabia.',
   'aboutIntro.value1.title': 'Secure AI',
   'aboutIntro.value1.desc': 'Privacy and control by design',
   'aboutIntro.value2.title': 'Arabic & English',
   'aboutIntro.value2.desc': 'Bilingual enterprise delivery',
   'aboutIntro.value3.title': 'Customer Success',
-  'aboutIntro.value3.desc': 'Long-term partnership and support',
+  'aboutIntro.value3.desc': 'Long term partnership and support',
   'aboutIntro.cta': 'Discover Our Story',
 
   // Industries section
@@ -81,7 +88,7 @@ export const en: TranslationDict = {
   'industries.manufacturing.title': 'Manufacturing & Industrial',
   'industries.manufacturing.description':
     'Copilot for production reporting, supply chain coordination, quality compliance, and supplier management.',
-  'industries.retail.title': 'Retail & E-commerce',
+  'industries.retail.title': 'Retail & Ecommerce',
   'industries.retail.description':
     'Copilot for marketing content, sales analytics, inventory reporting, and supplier coordination.',
   'industries.professional.title': 'Professional Services',
@@ -111,33 +118,33 @@ export const en: TranslationDict = {
   'services.agents.p4': 'Bilingual (Arabic + English)',
   'services.ops.title': 'Operations Automation',
   'services.ops.description':
-    'Full-stack operations platform: ERP, procurement automation, RFQ automation, and ZATCA-compliant finance. Built in-house, not layered on third-party systems.',
-  'services.ops.p1': 'Industry-specific ERP',
+    'Full stack operations platform: ERP, procurement automation, RFQ automation, and ZATCA compliant finance. Built in house, not layered on third party systems.',
+  'services.ops.p1': 'Industry specific ERP',
   'services.ops.p2': 'Procurement automation',
   'services.ops.p3': 'RFQ automation',
-  'services.ops.p4': 'ZATCA e-invoicing',
+  'services.ops.p4': 'ZATCA e invoicing',
 
   // Approach
   'approach.badge': 'Land & Expand',
   'approach.title': 'Start Small. Win Fast. Expand Boldly.',
   'approach.subtitle':
-    'Our land-and-expand model means you see value in 30 days, not 12 months. Prove AI works for your team, then scale at your pace.',
-  'approach.1.timing': 'Week 1-4',
+    'Our land and expand model means you see value in 30 days, not 12 months. Prove AI works for your team, then scale at your pace.',
+  'approach.1.timing': 'Week 1 to 4',
   'approach.1.title': 'AI Training',
   'approach.1.description':
     'Quick productivity wins through practical AI skills, including Microsoft Copilot, ChatGPT, and prompt engineering for daily work.',
-  'approach.2.timing': 'Week 4-8',
+  'approach.2.timing': 'Week 4 to 8',
   'approach.2.title': 'Adoption Deepens',
   'approach.2.description':
     'Habits form. Teams start hitting walls ("Copilot can\'t do X"), which is exactly where AI agents come in.',
-  'approach.3.timing': 'Month 3-6',
+  'approach.3.timing': 'Month 3 to 6',
   'approach.3.title': 'Private AI Agents',
   'approach.3.description':
     'We deploy WhatsApp agents, document extraction, and custom workflow agents that run 24/7 on your data.',
   'approach.4.timing': 'Month 6+',
   'approach.4.title': 'Full Operations Platform',
   'approach.4.description':
-    'ERP, procurement, ZATCA finance: your entire operation on one AI-powered platform built for Saudi business.',
+    'ERP, procurement, ZATCA finance: your entire operation on one AI powered platform built for Saudi business.',
 
   // Problem
   'problem.title': 'The Real Cost of Staying Manual',
@@ -145,13 +152,13 @@ export const en: TranslationDict = {
     'Most Saudi businesses still run on paper, Excel, and WhatsApp. Vision 2030 is changing the rules. The companies that adopt AI now will lead the next decade.',
   'problem.1.title': 'Hours lost to manual work',
   'problem.1.description':
-    'Your team spends 40-60% of their day on email, data entry, document formatting, and reporting that AI can do in seconds.',
+    'Your team spends 40 to 60% of their day on email, data entry, document formatting, and reporting that AI can do in seconds.',
   'problem.2.title': 'Compliance pressure mounting',
   'problem.2.description':
-    'ZATCA e-invoicing, SDAIA AI guidelines, and Vision 2030 targets mean manual processes are becoming a regulatory risk.',
+    'ZATCA e invoicing, SDAIA AI guidelines, and Vision 2030 targets mean manual processes are becoming a regulatory risk.',
   'problem.3.title': 'Knowledge trapped in silos',
   'problem.3.description':
-    "Critical know-how lives in WhatsApp chats, spreadsheets, and people's heads, so every handover or resignation resets progress.",
+    "Critical know how lives in WhatsApp chats, spreadsheets, and people's heads, so every handover or resignation resets progress.",
   'problem.4.title': 'Competitors are moving',
   'problem.4.description':
     'Microsoft is skilling 3 million Saudis in AI by 2030. The companies that adopt early will win talent, contracts, and market share.',
@@ -164,13 +171,13 @@ export const en: TranslationDict = {
   'whyUs.imageAlt': 'Saudi business team using Gulf AI Systems',
   'whyUs.1.title': 'Built for Saudi Arabia',
   'whyUs.1.description':
-    'Every solution is designed for Saudi business realities: bilingual workflows, ZATCA compliance, Vision 2030 alignment, and Arabic-first delivery.',
+    'Every solution is designed for Saudi business realities: bilingual workflows, ZATCA compliance, Vision 2030 alignment, and Arabic first delivery.',
   'whyUs.2.title': 'Proprietary Platform',
   'whyUs.2.description':
-    'Our AI agents and operations platform are built in-house, not layered on SAP, Oracle, or Odoo. Full control, no vendor lock-in.',
+    'Our AI agents and operations platform are built in house, not layered on SAP, Oracle, or Odoo. Full control, no vendor lock in.',
   'whyUs.3.title': 'Prove ROI in 30 Days',
   'whyUs.3.description':
-    'AI Training delivers measurable productivity gains in the first month. No 12-month consulting engagements before you see value.',
+    'AI Training delivers measurable productivity gains in the first month. No 12 month consulting engagements before you see value.',
   'whyUs.4.title': 'Human in the Loop',
   'whyUs.4.description':
     'AI handles the heavy lifting, but your team stays in control of critical decisions. We build trust first, automate second.',
@@ -178,7 +185,7 @@ export const en: TranslationDict = {
   'whyUs.strip.registered': 'Registered in Saudi Arabia',
   'whyUs.strip.bilingual': 'Arabic & English Support',
   'whyUs.strip.enterprise': 'Enterprise AI',
-  'whyUs.strip.human': 'Human-Led Control',
+  'whyUs.strip.human': 'Human Led Control',
 
   // Audit CTA
   'audit.title': 'Ready to automate your construction operations?',
@@ -204,13 +211,13 @@ export const en: TranslationDict = {
   'audit.service.fundamentals': 'AI Fundamentals Training',
   'audit.service.agents': 'Private AI Agents',
   'audit.service.ops': 'Operations Automation',
-  'audit.service.erp': 'AI-Powered ERP',
+  'audit.service.erp': 'AI Powered ERP',
   'audit.service.copilot': 'AI Training',
   'audit.service.other': 'Other',
 
   // Contact
   'contact.hero.eyebrow': 'Contact Gulf AI Systems',
-  'contact.hero.title': "Let's Build Your AI Future Together",
+  'contact.hero.title': 'Talk to Gulf AI Systems',
   'contact.hero.subtitle':
     'Connect with our team to explore practical AI solutions, intelligent automation, Microsoft Copilot, enterprise AI agents, and digital transformation strategies tailored to your business goals.',
   'contact.hero.ctaPrimary': 'Book a Consultation',
@@ -245,8 +252,8 @@ export const en: TranslationDict = {
   'contact.info.emailTitle': 'Email',
   'contact.info.whatsappTitle': 'WhatsApp',
   'contact.info.hoursTitle': 'Business Hours',
-  'contact.info.hoursWeekdayLabel': 'Sunday – Thursday',
-  'contact.info.hoursWeekdayTime': '9:00 AM – 6:00 PM',
+  'contact.info.hoursWeekdayLabel': 'Sunday to Thursday',
+  'contact.info.hoursWeekdayTime': '9:00 AM to 6:00 PM',
   'contact.info.hoursFridayLabel': 'Friday and Saturday',
   'contact.info.hoursFridayValue': 'Closed',
   'contact.info.hoursNote': 'We typically respond within one business day.',
@@ -308,7 +315,7 @@ export const en: TranslationDict = {
     'Yes. Our solutions can integrate with existing ERP, CRM, finance, Microsoft 365, and operational systems, allowing businesses to improve workflows without replacing their entire technology environment.',
   'contact.faq.3.q': 'Do you provide AI Training in Saudi Arabia?',
   'contact.faq.3.a':
-    'Yes. We provide role-based AI Training for Finance, HR, Executive, IT, and Operations teams, including Microsoft Copilot modules, in Riyadh, Jeddah, online, and on-site where available.',
+    'Yes. We provide role based AI Training for Finance, HR, Executive, IT, and Operations teams, including Microsoft Copilot modules, in Riyadh, Jeddah, online, and on site where available.',
   'contact.faq.4.q': 'What is an enterprise AI agent?',
   'contact.faq.4.a':
     'An enterprise AI agent is a digital assistant that can support or automate business tasks such as document processing, reporting, customer enquiries, workflow updates, data retrieval, and internal coordination.',
@@ -317,7 +324,7 @@ export const en: TranslationDict = {
     'Yes. We assess your current processes, systems, business priorities, and readiness before recommending a practical AI roadmap aligned with your organisation’s goals.',
   'contact.faq.6.q': 'Do you provide ERP and business automation solutions?',
   'contact.faq.6.a':
-    'Yes. We provide AI-powered ERP solutions, workflow automation, system integration, and intelligent business process improvement for organisations seeking more connected operations.',
+    'Yes. We provide AI powered ERP solutions, workflow automation, system integration, and intelligent business process improvement for organisations seeking more connected operations.',
   'contact.faq.7.q': 'Can your solutions support Arabic and English?',
   'contact.faq.7.a':
     'Yes. We design bilingual AI and automation solutions that can support both Arabic and English business environments, depending on the project requirements.',
@@ -329,10 +336,10 @@ export const en: TranslationDict = {
     'Yes. We can create secure private AI knowledge systems that help employees access approved policies, procedures, documents, and internal information more efficiently.',
   'contact.faq.10.q': 'How can AI improve business productivity?',
   'contact.faq.10.a':
-    'AI can reduce repetitive work, improve information access, accelerate reporting, support decision-making, automate document handling, and help teams work more efficiently.',
-  'contact.faq.11.q': 'Do you offer online and on-site consultations?',
+    'AI can reduce repetitive work, improve information access, accelerate reporting, support decision making, automate document handling, and help teams work more efficiently.',
+  'contact.faq.11.q': 'Do you offer online and on site consultations?',
   'contact.faq.11.a':
-    'Yes. Initial consultations and demonstrations can be delivered online, with on-site meetings available for suitable projects and locations in Saudi Arabia.',
+    'Yes. Initial consultations and demonstrations can be delivered online, with on site meetings available for suitable projects and locations in Saudi Arabia.',
   'contact.faq.12.q': 'How long does an AI implementation take?',
   'contact.faq.12.a':
     'Timelines depend on the solution, integrations, data readiness, and project scope. After the discovery stage, we provide a clear implementation plan and estimated timeline.',
@@ -351,7 +358,7 @@ export const en: TranslationDict = {
 
   'contact.meta.title': 'Contact Gulf AI Systems | Enterprise AI Saudi Arabia',
   'contact.meta.description':
-    'Contact Gulf AI Systems to explore enterprise AI, Microsoft Copilot, ERP, automation, and digital transformation solutions for Saudi organisations.',
+    'Speak with Gulf AI Systems about AI training, private AI agents, ERP and business automation solutions across Saudi Arabia.',
 
   'contact.service.copilot': 'AI Training',
   'contact.service.agents': 'Private AI Agents',
@@ -366,11 +373,14 @@ export const en: TranslationDict = {
 
   // About page
   'about.hero.eyebrow': 'About us',
-  'about.hero.title': 'Gulf AI Systems',
+  'about.hero.title': 'About Gulf AI Systems',
   'about.hero.subtitle':
     'Helping Saudi businesses modernize with AI automation, ERP, and digital growth built for real enterprise teams.',
   'about.hero.ctaDemo': 'Book Demo',
   'about.hero.ctaContact': 'Contact Us',
+  'about.meta.title': 'About Gulf AI Systems | Enterprise AI Partner in Saudi Arabia',
+  'about.meta.description':
+    'Learn how Gulf AI Systems helps Saudi organisations adopt practical AI, private agents, ERP and automation with secure enterprise delivery.',
   'about.who.title': 'A Trusted AI and ERP Partner in the Kingdom',
   'about.who.body':
     'Gulf AI Systems helps Saudi organisations adopt practical AI, intelligent automation, ERP, and digital transformation solutions designed for secure, scalable, and bilingual enterprise environments.',
@@ -422,14 +432,14 @@ export const en: TranslationDict = {
   'about.why.eyebrow': 'Why choose us',
   'about.why.title': 'Why companies choose Gulf AI Systems',
   'about.why.subtitle':
-    'We combine enterprise-grade technology with practical delivery, so your team sees results, not just software.',
-  'about.why.1.title': 'Saudi-focused expertise',
+    'We combine enterprise grade technology with practical delivery, so your team sees results, not just software.',
+  'about.why.1.title': 'Saudi focused expertise',
   'about.why.1.desc':
     'Local market knowledge across procurement, compliance, and bilingual delivery.',
   'about.why.2.title': 'AI with human control',
   'about.why.2.desc':
-    'Automation that supports decisions with clear oversight, not black-box risk.',
-  'about.why.3.title': 'End-to-end delivery',
+    'Automation that supports decisions with clear oversight, not black box risk.',
+  'about.why.3.title': 'End to end delivery',
   'about.why.3.desc':
     'From strategy and build through rollout, training, and ongoing support.',
   'about.why.4.title': 'Australian standards',
@@ -438,7 +448,7 @@ export const en: TranslationDict = {
   'about.why.5.title': 'Faster modernization',
   'about.why.5.desc':
     'Practical roadmaps that move teams from manual work to connected operations quickly.',
-  'about.why.6.title': 'Enterprise-ready security',
+  'about.why.6.title': 'Enterprise ready security',
   'about.why.6.desc':
     'Controls, compliance readiness, and architecture built for regulated environments.',
   'about.moments.eyebrow': 'Our People & Moments',
@@ -454,7 +464,7 @@ export const en: TranslationDict = {
   'about.people.founders.eyebrow': 'LEADERSHIP',
   'about.people.founders.title': 'Founders',
   'about.people.founders.desc':
-    'Experienced operators guiding Global AI Group with a focus on secure delivery, responsible adoption, and partner-first outcomes.',
+    'Experienced operators guiding Global AI Group with a focus on secure delivery, responsible adoption, and partner first outcomes.',
   'about.people.advisors.eyebrow': 'LEADERSHIP',
   'about.people.advisors.title': 'AI Advisors',
   'about.people.advisors.desc':

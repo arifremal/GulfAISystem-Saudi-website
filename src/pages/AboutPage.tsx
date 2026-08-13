@@ -1,16 +1,20 @@
+import { useMemo } from 'react'
 import {
   ArrowUpRight,
   Globe2,
   MapPin,
   ShieldCheck,
 } from 'lucide-react'
+import { AboutEventsSection } from '../components/about/AboutEventsSection'
 import { AboutMomentsSection } from '../components/about/AboutMomentsSection'
 import { AboutPeopleSections } from '../components/about/AboutPeopleSections'
 import { AboutVision2030Section } from '../components/about/AboutVision2030Section'
 import { AboutVisionSection } from '../components/about/AboutVisionSection'
 import { AboutWhySection } from '../components/about/AboutWhySection'
+import { PageSeo } from '../components/PageSeo'
 import { Reveal } from '../components/about/Reveal'
 import { useLanguage } from '../i18n'
+import { breadcrumbSchema } from '../lib/seo'
 
 const whoPoints = [
   { titleKey: 'about.who.1.title', descKey: 'about.who.1.desc', icon: Globe2 },
@@ -21,8 +25,24 @@ const whoPoints = [
 export function AboutPage() {
   const { t } = useLanguage()
 
+  const schemas = useMemo(
+    () => ({
+      'about-breadcrumb-schema': breadcrumbSchema([
+        { name: t('servicePage.shared.home'), path: '/' },
+        { name: t('nav.about'), path: '/about' },
+      ]),
+    }),
+    [t],
+  )
+
   return (
     <main className="overflow-x-hidden">
+      <PageSeo
+        title={t('about.meta.title')}
+        description={t('about.meta.description')}
+        path="/about"
+        schemas={schemas}
+      />
       <section className="relative min-h-[88vh] overflow-hidden">
         <div className="absolute inset-0">
           <picture>
@@ -35,8 +55,17 @@ export function AboutPage() {
             />
           </picture>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020b1d]/90 via-[#020b1d]/62 to-[#020b1d]/28" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#020b1d]/80 via-transparent to-[#020b1d]/45" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020b1d]/50 via-[#0a1f4d]/22 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020b1d]/45 via-transparent to-[#020b1d]/12" />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 65% 55% at 72% 48%, rgba(20,71,230,0.22) 0%, rgba(56,189,248,0.08) 40%, transparent 72%)',
+          }}
+        />
+        <div className="pointer-events-none absolute -end-20 top-1/4 h-[26rem] w-[26rem] rounded-full bg-[#1447E6]/20 blur-3xl" />
+        <div className="pointer-events-none absolute start-1/4 bottom-0 h-56 w-[32rem] rounded-full bg-[#38bdf8]/12 blur-3xl" />
 
         <div className="relative mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-end px-6 pb-16 pt-28 sm:justify-center sm:pb-24 lg:px-8">
           <Reveal immediate className="max-w-2xl">
@@ -63,6 +92,8 @@ export function AboutPage() {
       </section>
 
       <AboutMomentsSection />
+
+      <AboutEventsSection />
 
       <AboutVisionSection />
 

@@ -1,8 +1,10 @@
 import type { TranslationDict } from './types'
+import { eventsAr } from './events-ar'
 import { servicePagesAr } from './service-pages-ar'
 
 export const ar: TranslationDict = {
   ...servicePagesAr,
+  ...eventsAr,
 
   'nav.about': 'من نحن',
   'nav.industries': 'القطاعات',
@@ -24,8 +26,8 @@ export const ar: TranslationDict = {
   'nav.lang.switch': 'تغيير اللغة',
 
   'hero.slide1.tab': 'شريك موثوق',
-  'hero.slide1.line1': 'شريكك الموثوق',
-  'hero.slide1.line2': 'في الذكاء الاصطناعي في السعودية',
+  'hero.slide1.line1': 'حلول ذكاء اصطناعي للمؤسسات',
+  'hero.slide1.line2': 'للأعمال السعودية',
   'hero.slide2.tab': 'تدريب الذكاء الاصطناعي',
   'hero.slide2.line1': 'تدريب الذكاء الاصطناعي',
   'hero.slide2.line2': 'للفرق الحديثة',
@@ -34,6 +36,10 @@ export const ar: TranslationDict = {
   'hero.slide3.line2': 'المشتريات والمالية',
   'hero.cta': 'استشارة مجانية',
   'hero.aria.book': 'احجز استشارة',
+
+  'home.meta.title': 'حلول ذكاء اصطناعي للمؤسسات للأعمال السعودية | جلف إيه آي سيستمز',
+  'home.meta.description':
+    'حلول ذكاء اصطناعي ووكلاء خاصون وERP وأتمتة للأعمال السعودية. حسّن عملياتك مع جلف إيه آي سيستمز.',
 
   // Proof strip — static value cards (not stats)
   'proof.1.value': '100%',
@@ -115,15 +121,15 @@ export const ar: TranslationDict = {
   'approach.title': 'ابدأ صغيراً. اربح بسرعة. توسّع بثقة.',
   'approach.subtitle':
     'نموذجنا يعني أن ترى القيمة خلال 30 يوماً, وليس خلال 12 شهراً. أثبت أن الذكاء الاصطناعي ينجح لفريقك، ثم وسّع بوتيرتك.',
-  'approach.1.timing': 'الأسبوع 1-4',
+  'approach.1.timing': 'الأسبوع 1 إلى 4',
   'approach.1.title': 'تدريب الذكاء الاصطناعي',
   'approach.1.description':
     'مكاسب إنتاجية سريعة عبر مهارات عملية في الذكاء الاصطناعي، بما في ذلك Microsoft Copilot وChatGPT وهندسة التوجيه للعمل اليومي.',
-  'approach.2.timing': 'الأسبوع 4-8',
+  'approach.2.timing': 'الأسبوع 4 إلى 8',
   'approach.2.title': 'تعميق التبني',
   'approach.2.description':
     'تتشكل العادات. تبدأ الفرق بمواجهة حدود («كوبايلوت لا يستطيع فعل X»)، وهنا يأتي دور وكلاء الذكاء الاصطناعي.',
-  'approach.3.timing': 'الشهر 3-6',
+  'approach.3.timing': 'الشهر 3 إلى 6',
   'approach.3.title': 'وكلاء ذكاء اصطناعي خاصون',
   'approach.3.description':
     'ننشر وكلاء واتساب واستخراج المستندات ووكلاء سير عمل مخصصة تعمل على مدار الساعة على بياناتكم.',
@@ -137,7 +143,7 @@ export const ar: TranslationDict = {
     'ما زالت معظم الشركات السعودية تعتمد على الورق وإكسل وواتساب. رؤية 2030 تغيّر القواعد. والشركات التي تتبنى الذكاء الاصطناعي الآن ستقود العقد القادم.',
   'problem.1.title': 'ساعات تُهدر في العمل اليدوي',
   'problem.1.description':
-    'يقضي فريقك 40-60٪ من يومه في البريد وإدخال البيانات وتنسيق المستندات والتقارير التي ينجزها الذكاء الاصطناعي في ثوانٍ.',
+    'يقضي فريقك 40 to 60٪ من يومه في البريد وإدخال البيانات وتنسيق المستندات والتقارير التي ينجزها الذكاء الاصطناعي في ثوانٍ.',
   'problem.2.title': 'ضغط الامتثال يتزايد',
   'problem.2.description':
     'الفوترة الإلكترونية للزكاة وإرشادات سدايا ورؤية 2030 تجعل العمليات اليدوية مخاطرة تنظيمية.',
@@ -198,7 +204,7 @@ export const ar: TranslationDict = {
   'audit.service.other': 'أخرى',
 
   'contact.hero.eyebrow': 'تواصل مع جلف إيه آي سيستمز',
-  'contact.hero.title': 'لنبنِ مستقبل الذكاء الاصطناعي معاً',
+  'contact.hero.title': 'تحدث مع جلف إيه آي سيستمز',
   'contact.hero.subtitle':
     'تواصل مع فريقنا لاستكشاف حلول ذكاء اصطناعي عملية، وأتمتة ذكية، وMicrosoft Copilot، ووكلاء ذكاء اصطناعي للمؤسسات، واستراتيجيات التحول الرقمي المصممة لأهداف أعمالك.',
   'contact.hero.ctaPrimary': 'احجز استشارة',
@@ -233,8 +239,8 @@ export const ar: TranslationDict = {
   'contact.info.emailTitle': 'البريد الإلكتروني',
   'contact.info.whatsappTitle': 'واتساب',
   'contact.info.hoursTitle': 'ساعات العمل',
-  'contact.info.hoursWeekdayLabel': 'الأحد – الخميس',
-  'contact.info.hoursWeekdayTime': '9:00 ص – 6:00 م',
+  'contact.info.hoursWeekdayLabel': 'الأحد إلى الخميس',
+  'contact.info.hoursWeekdayTime': '9:00 ص إلى 6:00 م',
   'contact.info.hoursFridayLabel': 'الجمعة والسبت',
   'contact.info.hoursFridayValue': 'مغلق',
   'contact.info.hoursNote': 'نرد عادةً خلال يوم عمل واحد.',
@@ -339,7 +345,7 @@ export const ar: TranslationDict = {
 
   'contact.meta.title': 'تواصل مع جلف إيه آي سيستمز | ذكاء اصطناعي للمؤسسات في السعودية',
   'contact.meta.description':
-    'تواصل مع جلف إيه آي سيستمز لاستكشاف حلول الذكاء الاصطناعي للمؤسسات وMicrosoft Copilot وERP والأتمتة والتحول الرقمي للمؤسسات السعودية.',
+    'تحدث مع جلف إيه آي سيستمز حول تدريب الذكاء الاصطناعي والوكلاء الخاصين وERP وأتمتة الأعمال في السعودية.',
 
   'contact.service.copilot': 'تدريب الذكاء الاصطناعي',
   'contact.service.agents': 'وكلاء ذكاء اصطناعي خاصون',
@@ -353,11 +359,14 @@ export const ar: TranslationDict = {
   'contact.service.general': 'استفسار عام',
 
   'about.hero.eyebrow': 'من نحن',
-  'about.hero.title': 'جلف إيه آي سيستمز',
+  'about.hero.title': 'عن جلف إيه آي سيستمز',
   'about.hero.subtitle':
     'نساعد الشركات السعودية على التحديث عبر أتمتة الذكاء الاصطناعي وأنظمة ERP والنمو الرقمي المصممة لفرق المؤسسات الحقيقية.',
   'about.hero.ctaDemo': 'احجز عرضاً',
   'about.hero.ctaContact': 'تواصل معنا',
+  'about.meta.title': 'عن جلف إيه آي سيستمز | شريك ذكاء اصطناعي للمؤسسات في السعودية',
+  'about.meta.description':
+    'تعرّف كيف تساعد جلف إيه آي سيستمز المؤسسات السعودية على تبني الذكاء الاصطناعي والوكلاء الخاصين وERP والأتمتة بتسليم مؤسسي آمن.',
   'about.who.title': 'شريك موثوق للذكاء الاصطناعي وERP في المملكة',
   'about.who.body':
     'تساعد جلف إيه آي سيستمز المؤسسات السعودية على تبني حلول عملية للذكاء الاصطناعي والأتمتة الذكية وERP والتحول الرقمي، مصممة لبيئات مؤسسات آمنة وقابلة للتوسع وثنائية اللغة.',
