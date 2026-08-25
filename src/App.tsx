@@ -12,7 +12,6 @@ import { Footer } from './components/Footer'
 import { AboutPage } from './pages/AboutPage'
 import { ContactPage } from './pages/ContactPage'
 import { ServicePage } from './pages/ServicePage'
-import { ChatWidget } from './components/ChatWidget'
 import { getServiceKeyFromPath, resolveServicePathname } from './data/content'
 
 export default function App() {
@@ -53,7 +52,6 @@ export default function App() {
       )}
       {!isContactPage && !isServicePage && <AuditCta />}
       <Footer />
-      <ChatWidget />
     </div>
   )
 }
