@@ -11,6 +11,7 @@ import {
   EVENT_IMAGE_IMG,
 } from '../../data/eventImageStyles'
 import { useLanguage } from '../../i18n'
+import { OptimizedImage } from '../OptimizedImage'
 import { Reveal } from './Reveal'
 
 export function AboutEventsSection() {
@@ -52,9 +53,10 @@ export function AboutEventsSection() {
                   <span
                     className={`${EVENT_IMAGE_CARD} ${EVENT_IMAGE_CARD_HOVER} ${EVENT_IMAGE_ASPECT}`}
                   >
-                    <img
+                    <OptimizedImage
                       src={item.src}
                       alt={t(item.altKey)}
+                      kind="gallery"
                       width={item.width}
                       height={item.height}
                       className={`${EVENT_IMAGE_IMG} ${item.objectPosition}`}

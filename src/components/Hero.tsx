@@ -1,15 +1,19 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '../i18n'
-import { ConsultationModal } from './ConsultationModal'
+import { OptimizedImage } from './OptimizedImage'
 import { Reveal } from './Reveal'
+
+const ConsultationModal = lazy(() =>
+  import('./ConsultationModal').then((m) => ({ default: m.ConsultationModal })),
+)
 
 const AUTO_INTERVAL_MS = 3000
 
 const slideMeta = [
-  { id: '1' as const, accentAfter: 1, image: '/assets/hero-slide-1.png' },
-  { id: '2' as const, accentAfter: 0, image: '/assets/hero-slide-2.png' },
-  { id: '3' as const, accentAfter: 0, image: '/assets/hero-slide-3.png' },
+  { id: '1' as const, image: '/assets/hero-slide-1.png' },
+  { id: '2' as const, image: '/assets/hero-slide-2.png' },
+  { id: '3' as const, image: '/assets/hero-slide-3.png' },
 ]
 
 export function Hero() {
@@ -89,17 +93,32 @@ export function Hero() {
           }`}
           aria-hidden={i !== activeIndex}
         >
-          <img
+          <OptimizedImage
             src={s.image}
             alt=""
+            kind="hero"
+            width={1920}
+            height={1080}
             className="h-full w-full object-cover object-center"
             fetchPriority={i === 0 ? 'high' : 'low'}
+            loading={i === 0 ? 'eager' : 'lazy'}
+            decoding="async"
           />
         </div>
       ))}
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#020b1d]/85 via-[#020b1d]/55 to-[#020b1d]/25" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#020b1d]/70 via-transparent to-[#020b1d]/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#020b1d]/55 via-[#0a1f4d]/25 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#020b1d]/50 via-transparent to-[#020b1d]/15" />
+      {/* Blue light wash — keeps photo visible with a cool glow */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 70% 55% at 70% 45%, rgba(20,71,230,0.28) 0%, rgba(56,189,248,0.10) 35%, transparent 70%), radial-gradient(ellipse 45% 40% at 15% 60%, rgba(20,71,230,0.18) 0%, transparent 65%)',
+        }}
+      />
+      <div className="pointer-events-none absolute -end-16 top-1/4 h-[28rem] w-[28rem] rounded-full bg-[#1447E6]/25 blur-3xl" />
+      <div className="pointer-events-none absolute start-1/3 bottom-0 h-64 w-[36rem] -translate-x-1/2 rounded-full bg-[#38bdf8]/15 blur-3xl" />
 
       <div className="relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-6 pb-28 pt-28 lg:px-8">
         <Reveal immediate className="max-w-3xl">
@@ -112,9 +131,6 @@ export function Hero() {
               {slide.headline.map((line, i) => (
                 <span key={`${slide.id}-${i}`} className="block">
                   {line}
-                  {i === slide.accentAfter && (
-                    <span className="ms-4 inline-block h-[3px] w-16 translate-y-[-0.2em] bg-[#1447E6] align-middle sm:w-24" />
-                  )}
                 </span>
               ))}
             </h1>
@@ -166,7 +182,11 @@ export function Hero() {
         </div>
       </div>
 
-      <ConsultationModal open={consultOpen} onClose={() => setConsultOpen(false)} />
+      {consultOpen ? (
+        <Suspense fallback={null}>
+          <ConsultationModal open={consultOpen} onClose={() => setConsultOpen(false)} />
+        </Suspense>
+      ) : null}
     </section>
   )
 }

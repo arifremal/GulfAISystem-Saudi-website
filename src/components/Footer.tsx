@@ -218,9 +218,9 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="text-[0.7rem] font-semibold tracking-[0.16em] text-white uppercase">
+      <p className="text-[0.7rem] font-semibold tracking-[0.16em] text-white uppercase">
         {title}
-      </h3>
+      </p>
       <ul className="mt-6 space-y-3.5">{children}</ul>
     </div>
   )

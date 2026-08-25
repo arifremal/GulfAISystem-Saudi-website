@@ -11,6 +11,7 @@ import {
   Workflow,
 } from 'lucide-react'
 import { useLanguage } from '../../i18n'
+import { OptimizedImage } from '../OptimizedImage'
 import { Reveal } from './Reveal'
 
 const FEATURE_CARDS = [
@@ -85,9 +86,12 @@ export function AboutVision2030Section() {
             {/* Right — hero image + floating cards */}
             <div className="relative order-1 min-h-[340px] sm:min-h-[420px] lg:order-2 lg:min-h-[560px]">
               <Reveal delay={60} className="absolute inset-0 lg:-end-4 lg:start-[-12%]">
-                <img
+                <OptimizedImage
                   src={VISION_IMAGE}
                   alt={t('about.vision2030.imageAlt')}
+                  kind="card"
+                  width={1200}
+                  height={900}
                   className="h-full w-full object-cover object-[70%_18%] sm:object-[68%_20%]"
                   loading="lazy"
                   decoding="async"

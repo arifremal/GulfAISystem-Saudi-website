@@ -10,13 +10,13 @@ export const servicePagesEn: TranslationDict = {
   // TRAINING — AI Training (Microsoft Copilot as a key module)
   // ════════════════════════════════════════════════════════════════════════
   'servicePage.training.meta.title':
-    'AI Training Saudi Arabia | Business & Enterprise AI Training | Gulf AI Systems',
+    'AI Training for Saudi Organisations | Gulf AI Systems',
   'servicePage.training.meta.description':
-    'AI Training for modern organisations in Saudi Arabia. Modules include AI Fundamentals, ChatGPT for Business, Microsoft Copilot Training, Prompt Engineering, Generative AI, and Responsible AI.',
+    'Practical AI training for Saudi teams covering AI fundamentals, Copilot, prompting, security and responsible workplace adoption.',
   'servicePage.training.breadcrumb': 'AI Training',
 
   'servicePage.training.hero.eyebrow': 'AI Training',
-  'servicePage.training.hero.title': 'AI Training for Modern Organisations',
+  'servicePage.training.hero.title': 'AI Training for Modern Saudi Organisations',
   'servicePage.training.hero.subtitle':
     'Practical AI training across platforms, including Microsoft Copilot, delivered in Arabic and English for real Saudi workflows.',
   'servicePage.training.hero.ctaPrimary': 'Book a Consultation',
@@ -27,14 +27,14 @@ export const servicePagesEn: TranslationDict = {
   'servicePage.training.why.eyebrow': 'Why train',
   'servicePage.training.why.title': 'Tools alone do not create adoption',
   'servicePage.training.why.subtitle':
-    'Saudi enterprises that win with AI combine clear use cases with role-based enablement across platforms, including Microsoft Copilot.',
+    'Saudi enterprises that win with AI combine clear use cases with role based enablement across platforms, including Microsoft Copilot.',
   'servicePage.training.why.1.title': 'Mapped to real workflows',
   'servicePage.training.why.1.desc':
     'Scenarios built around your documents, reports, and meetings, not generic demos.',
   'servicePage.training.why.2.title': 'Arabic and English',
   'servicePage.training.why.2.desc':
-    'Bilingual sessions so mixed-language teams adopt AI tools with confidence.',
-  'servicePage.training.why.3.title': 'Role-based by design',
+    'Bilingual sessions so mixed language teams adopt AI tools with confidence.',
+  'servicePage.training.why.3.title': 'Role based by design',
   'servicePage.training.why.3.desc':
     'Finance, HR, Operations, and leadership each get prompts that match daily work.',
   'servicePage.training.why.4.title': 'Adoption that sticks',
@@ -55,10 +55,10 @@ export const servicePagesEn: TranslationDict = {
     'Curriculum built around your templates, including Microsoft Copilot across Outlook, Word, Excel, Teams, and PowerPoint.',
   'servicePage.training.how.3.title': 'Live bilingual training',
   'servicePage.training.how.3.desc':
-    'Hands-on sessions on-site or online with practical prompting and safe use.',
+    'Hands on sessions on site or online with practical prompting and safe use.',
   'servicePage.training.how.4.title': 'Adoption coaching',
   'servicePage.training.how.4.desc':
-    'Follow-up support so productivity gains stick after the workshop.',
+    'Follow up support so productivity gains stick after the workshop.',
 
   'servicePage.training.benefits.eyebrow': 'Training modules',
   'servicePage.training.benefits.title': 'What your teams learn',
@@ -106,7 +106,7 @@ export const servicePagesEn: TranslationDict = {
     'Copilot handles first drafts and routine summaries.',
   'servicePage.training.outcomes.3.title': 'Better accuracy',
   'servicePage.training.outcomes.3.desc':
-    'Role-based prompts reduce errors and rework.',
+    'Role based prompts reduce errors and rework.',
   'servicePage.training.outcomes.4.title': 'Faster decisions',
   'servicePage.training.outcomes.4.desc':
     'Leaders get clearer briefs and reports sooner.',
@@ -114,15 +114,15 @@ export const servicePagesEn: TranslationDict = {
   'servicePage.training.implement.eyebrow': 'Implementation',
   'servicePage.training.implement.title': 'How we roll it out',
   'servicePage.training.implement.subtitle':
-    'A clear six-step path from discovery to ongoing support.',
+    'A clear six step path from discovery to ongoing support.',
   'servicePage.training.implement.1.title': 'Discovery',
   'servicePage.training.implement.1.desc': 'Map roles, licences, and priority use cases.',
   'servicePage.training.implement.2.title': 'Planning',
   'servicePage.training.implement.2.desc': 'Define workshop scope, groups, and success metrics.',
   'servicePage.training.implement.3.title': 'Implementation',
-  'servicePage.training.implement.3.desc': 'Build role-based curriculum and materials.',
+  'servicePage.training.implement.3.desc': 'Build role based curriculum and materials.',
   'servicePage.training.implement.4.title': 'Training',
-  'servicePage.training.implement.4.desc': 'Deliver bilingual hands-on sessions.',
+  'servicePage.training.implement.4.desc': 'Deliver bilingual hands on sessions.',
   'servicePage.training.implement.5.title': 'Go Live',
   'servicePage.training.implement.5.desc': 'Activate champions and daily Copilot habits.',
   'servicePage.training.implement.6.title': 'Support',
@@ -152,16 +152,16 @@ export const servicePagesEn: TranslationDict = {
     'A practical programme that builds AI skills across platforms. Modules include AI Fundamentals, ChatGPT for Business, Microsoft Copilot, Prompt Engineering, AI Productivity, Responsible AI, AI Security & Privacy, and AI Adoption Strategy.',
   'servicePage.training.faq.2.q': 'Do you deliver training in Arabic and English?',
   'servicePage.training.faq.2.a':
-    'Yes. Bilingual programmes support mixed-language Saudi teams.',
-  'servicePage.training.faq.3.q': 'Is this generic or role-based?',
+    'Yes. Bilingual programmes support mixed language Saudi teams.',
+  'servicePage.training.faq.3.q': 'Is this generic or role based?',
   'servicePage.training.faq.3.a':
-    'Role-based. Finance, HR, Operations, and leadership get tailored scenarios.',
+    'Role based. Finance, HR, Operations, and leadership get tailored scenarios.',
   'servicePage.training.faq.4.q': 'Is Microsoft Copilot included?',
   'servicePage.training.faq.4.a':
-    'Yes. Microsoft Copilot is a key enterprise module within AI Training, covering Outlook, Word, Excel, Teams, and PowerPoint. Licences should be available for hands-on Copilot workshops.',
+    'Yes. Microsoft Copilot is a key enterprise module within AI Training, covering Outlook, Word, Excel, Teams, and PowerPoint. Licences should be available for hands on Copilot workshops.',
   'servicePage.training.faq.5.q': 'Can you train in Riyadh and Jeddah?',
   'servicePage.training.faq.5.a':
-    'Yes, on-site where suitable, or online for distributed teams.',
+    'Yes, on site where suitable, or online for distributed teams.',
   'servicePage.training.faq.6.q': 'How long does a programme take?',
   'servicePage.training.faq.6.a':
     'Most combine discovery, workshops, and coaching over several weeks.',
@@ -196,11 +196,11 @@ export const servicePagesEn: TranslationDict = {
   'servicePage.agents.meta.title':
     'Private AI Agents for Saudi Enterprise | Gulf AI Systems',
   'servicePage.agents.meta.description':
-    'Private AI agents for Saudi enterprises, WhatsApp support, document extraction, and workflow automation under your control.',
+    'Deploy private AI agents for secure business support, internal knowledge, workflow automation and enterprise data access.',
   'servicePage.agents.breadcrumb': 'Private AI Agents',
 
   'servicePage.agents.hero.eyebrow': 'Enterprise AI agents',
-  'servicePage.agents.hero.title': 'Private AI Agents Built for Saudi Operations',
+  'servicePage.agents.hero.title': 'Private AI Agents for Secure Enterprise Operations',
   'servicePage.agents.hero.subtitle':
     'Bilingual agents that answer queries, extract documents, and run workflows.\nYour data stays under your control.',
   'servicePage.agents.hero.ctaPrimary': 'Discuss a Use Case',
@@ -231,7 +231,7 @@ export const servicePagesEn: TranslationDict = {
     'Focused on measurable tasks, safe integrations, and reliable operation.',
   'servicePage.agents.how.imageAlt':
     'Gulf AI Systems team designing private AI agents for Saudi organisations',
-  'servicePage.agents.how.1.title': 'Use-case scoping',
+  'servicePage.agents.how.1.title': 'Use case scoping',
   'servicePage.agents.how.1.desc':
     'Define the jobs, systems, and data the agent may use.',
   'servicePage.agents.how.2.title': 'Design and integrate',
@@ -247,12 +247,12 @@ export const servicePagesEn: TranslationDict = {
   'servicePage.agents.benefits.eyebrow': 'Benefits',
   'servicePage.agents.benefits.title': 'What agents deliver',
   'servicePage.agents.benefits.subtitle':
-    'Faster responses, less document work, and always-on support.',
+    'Faster responses, less document work, and always on support.',
   'servicePage.agents.benefits.imageAlt':
     'Saudi professional using a private AI agent workflow on a tablet',
   'servicePage.agents.benefits.1': '24/7 handling of common customer and internal requests',
   'servicePage.agents.benefits.2': 'Faster extraction from invoices, forms, and documents',
-  'servicePage.agents.benefits.3': 'Fewer repetitive WhatsApp and inbox follow-ups',
+  'servicePage.agents.benefits.3': 'Fewer repetitive WhatsApp and inbox follow ups',
   'servicePage.agents.benefits.4': 'Consistent answers from approved company information',
 
   'servicePage.agents.audience.eyebrow': 'Who it is for',
@@ -298,7 +298,7 @@ export const servicePagesEn: TranslationDict = {
   'servicePage.agents.implement.eyebrow': 'Implementation',
   'servicePage.agents.implement.title': 'How we roll it out',
   'servicePage.agents.implement.subtitle':
-    'A clear six-step path from discovery to ongoing support.',
+    'A clear six step path from discovery to ongoing support.',
   'servicePage.agents.implement.1.title': 'Discovery',
   'servicePage.agents.implement.1.desc': 'Scope channels, data sources, and success criteria.',
   'servicePage.agents.implement.2.title': 'Planning',
@@ -336,7 +336,7 @@ export const servicePagesEn: TranslationDict = {
     'A digital worker scoped to your tasks and approved data. It answers, extracts, and triggers workflows under your rules.',
   'servicePage.agents.faq.2.q': 'Can you build WhatsApp support agents?',
   'servicePage.agents.faq.2.a':
-    'Yes, for common enquiries, routing, and follow-ups, with human handoff when needed.',
+    'Yes, for common enquiries, routing, and follow ups, with human handoff when needed.',
   'servicePage.agents.faq.3.q': 'Do agents support Arabic and English?',
   'servicePage.agents.faq.3.a':
     'Yes. Designed for bilingual Saudi business environments.',
@@ -357,7 +357,7 @@ export const servicePagesEn: TranslationDict = {
     'Depends on channel and integrations. After discovery we share a clear pilot plan.',
   'servicePage.agents.faq.9.q': 'What is a good first use case?',
   'servicePage.agents.faq.9.a':
-    'High-volume, rule-based work: WhatsApp FAQs, document extraction, or routine status updates.',
+    'High volume, rule based work: WhatsApp FAQs, document extraction, or routine status updates.',
 
   'servicePage.agents.cta.title': 'Ready to put a private AI agent to work?',
   'servicePage.agents.cta.body':
@@ -378,13 +378,13 @@ export const servicePagesEn: TranslationDict = {
   // OPS — Operations Automation (ERP, procurement, RFQ, finance/ZATCA)
   // ════════════════════════════════════════════════════════════════════════
   'servicePage.ops.meta.title':
-    'Operations Automation | ERP, Procurement, RFQ & ZATCA | Gulf AI Systems',
+    'AI Operations Automation for Saudi Businesses | Gulf AI Systems',
   'servicePage.ops.meta.description':
-    'Operations automation for Saudi enterprises: ERP, procurement and RFQ, and ZATCA-aligned finance workflows.',
+    'Connect ERP, procurement and operational workflows with practical AI automation designed for Saudi business requirements.',
   'servicePage.ops.breadcrumb': 'Operations Automation',
 
   'servicePage.ops.hero.eyebrow': 'ERP and workflow automation',
-  'servicePage.ops.hero.title': 'Operations Automation for Saudi Enterprises',
+  'servicePage.ops.hero.title': 'AI Operations Automation for Saudi Businesses',
   'servicePage.ops.hero.subtitle':
     'Connect ERP, procurement, RFQ, and finance so teams spend less time chasing work.\nMore control. Fewer manual loops.',
   'servicePage.ops.hero.ctaPrimary': 'Book an Operations Review',
@@ -407,7 +407,7 @@ export const servicePagesEn: TranslationDict = {
     'Standardise requests, collect supplier responses, and cut email chase.',
   'servicePage.ops.why.4.title': 'Finance ready for local rules',
   'servicePage.ops.why.4.desc':
-    'ZATCA-aligned e-invoicing built into the operating rhythm.',
+    'ZATCA aligned e invoicing built into the operating rhythm.',
 
   'servicePage.ops.how.eyebrow': 'How we deliver',
   'servicePage.ops.how.title': 'Automate what matters first',
@@ -437,7 +437,7 @@ export const servicePagesEn: TranslationDict = {
   'servicePage.ops.benefits.1': 'Shorter RFQ and procurement cycles with fewer email loops',
   'servicePage.ops.benefits.2': 'Better visibility across projects, purchases, and suppliers',
   'servicePage.ops.benefits.3': 'Fewer manual entries between operations and finance',
-  'servicePage.ops.benefits.4': 'Stronger approval trails and ZATCA-ready finance workflows',
+  'servicePage.ops.benefits.4': 'Stronger approval trails and ZATCA ready finance workflows',
 
   'servicePage.ops.audience.eyebrow': 'Who it is for',
   'servicePage.ops.audience.title': 'Built for operationally intensive businesses',
@@ -451,13 +451,13 @@ export const servicePagesEn: TranslationDict = {
     'Standardise requests, compare responses, and cut cycle time.',
   'servicePage.ops.audience.3.title': 'Finance and accounts payable',
   'servicePage.ops.audience.3.desc':
-    'Connect operational documents to ZATCA-aligned invoice processes.',
+    'Connect operational documents to ZATCA aligned invoice processes.',
   'servicePage.ops.audience.4.title': 'Manufacturing and industrial',
   'servicePage.ops.audience.4.desc':
-    'Tighten material requests and production-related purchasing.',
+    'Tighten material requests and production related purchasing.',
   'servicePage.ops.audience.5.title': 'Logistics and trading',
   'servicePage.ops.audience.5.desc':
-    'Reduce friction between orders, documents, and financial close-out.',
+    'Reduce friction between orders, documents, and financial close out.',
   'servicePage.ops.audience.6.title': 'Owners and operations leaders',
   'servicePage.ops.audience.6.desc':
     'Gain clearer control of spend and status without more manual reporting.',
@@ -482,7 +482,7 @@ export const servicePagesEn: TranslationDict = {
   'servicePage.ops.implement.eyebrow': 'Implementation',
   'servicePage.ops.implement.title': 'How we roll it out',
   'servicePage.ops.implement.subtitle':
-    'A clear six-step path from discovery to ongoing support.',
+    'A clear six step path from discovery to ongoing support.',
   'servicePage.ops.implement.1.title': 'Discovery',
   'servicePage.ops.implement.1.desc': 'Map ERP, procurement, RFQ, and finance bottlenecks.',
   'servicePage.ops.implement.2.title': 'Planning',
@@ -517,22 +517,22 @@ export const servicePagesEn: TranslationDict = {
     'Short answers on ERP, procurement, RFQ, and ZATCA finance automation.',
   'servicePage.ops.faq.1.q': 'What does operations automation include?',
   'servicePage.ops.faq.1.a':
-    'Industry ERP, procurement, RFQ automation, approvals, and ZATCA-aligned finance workflows where required.',
+    'Industry ERP, procurement, RFQ automation, approvals, and ZATCA aligned finance workflows where required.',
   'servicePage.ops.faq.2.q': 'Do we have to replace our entire ERP?',
   'servicePage.ops.faq.2.a':
     'Not always. We assess whether to extend, integrate, or introduce a better fit for priority workflows.',
   'servicePage.ops.faq.3.q': 'What is RFQ automation?',
   'servicePage.ops.faq.3.a':
-    'Structured requests, supplier responses, comparisons, and follow-ups, without email-heavy tendering.',
-  'servicePage.ops.faq.4.q': 'Can you support ZATCA e-invoicing?',
+    'Structured requests, supplier responses, comparisons, and follow ups, without email heavy tendering.',
+  'servicePage.ops.faq.4.q': 'Can you support ZATCA e invoicing?',
   'servicePage.ops.faq.4.a':
-    'Yes. Finance automation can support ZATCA-aligned e-invoicing as part of daily operations.',
+    'Yes. Finance automation can support ZATCA aligned e invoicing as part of daily operations.',
   'servicePage.ops.faq.5.q': 'Is this only for construction?',
   'servicePage.ops.faq.5.a':
     'No. It also fits manufacturing, logistics, trading, and other complex procurement environments.',
   'servicePage.ops.faq.6.q': 'How do you choose what to automate first?',
   'servicePage.ops.faq.6.a':
-    'We prioritise high-friction workflows with clear ROI, often RFQ, approvals, or invoice handoffs.',
+    'We prioritise high friction workflows with clear ROI, often RFQ, approvals, or invoice handoffs.',
   'servicePage.ops.faq.7.q': 'Will teams need change management?',
   'servicePage.ops.faq.7.a':
     'Some process change is expected. We train on what matters and expand after adoption works.',

@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import { whyUs } from '../data/content'
 import { useLanguage } from '../i18n'
+import { OptimizedImage } from './OptimizedImage'
 import { Reveal } from './Reveal'
 
 const SAUDI_GREEN = '#006C35'
@@ -78,28 +79,49 @@ export function WhyUs() {
 
   return (
     <section id="why-us" className="why-us-section section-y relative overflow-hidden">
-      {/* Warm Saudi-inspired atmosphere */}
+      {/* Soft Saudi-green atmosphere */}
       <div
         aria-hidden
         className="absolute inset-0 -z-20"
         style={{
           background:
-            'linear-gradient(180deg, #fbfaf7 0%, #f7f5f0 42%, #f3f6f4 100%)',
+            'linear-gradient(180deg, #f3faf6 0%, #eef8f2 38%, #e8f5ee 72%, #f4faf7 100%)',
         }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -start-24 top-16 h-72 w-72 rounded-full blur-3xl"
-        style={{ background: 'color-mix(in oklab, #006C35 8%, transparent)' }}
+        className="pointer-events-none absolute inset-0 -z-20 opacity-40"
+        style={{
+          backgroundImage:
+            'radial-gradient(rgba(0,108,53,0.07) 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
+          maskImage:
+            'radial-gradient(ellipse 75% 70% at 50% 45%, black 20%, transparent 75%)',
+        }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute -end-16 bottom-10 h-80 w-80 rounded-full blur-3xl"
-        style={{ background: 'color-mix(in oklab, #C5A572 12%, transparent)' }}
+        className="pointer-events-none absolute -start-28 top-8 h-[22rem] w-[22rem] rounded-full blur-3xl"
+        style={{ background: 'color-mix(in oklab, #006C35 22%, transparent)' }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute start-1/2 top-0 h-56 w-[36rem] -translate-x-1/2 rounded-full blur-3xl"
+        style={{ background: 'color-mix(in oklab, #006C35 14%, transparent)' }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -end-20 bottom-6 h-[24rem] w-[24rem] rounded-full blur-3xl"
+        style={{ background: 'color-mix(in oklab, #0a8f4a 16%, transparent)' }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute end-1/4 top-1/3 h-48 w-48 rounded-full blur-3xl"
+        style={{ background: 'color-mix(in oklab, #C5A572 10%, transparent)' }}
       />
       <svg
         aria-hidden
-        className="why-us-wave pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 w-full opacity-[0.14] max-md:hidden"
+        className="why-us-wave pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-44 w-full opacity-[0.22] max-md:hidden"
         viewBox="0 0 1440 160"
         preserveAspectRatio="none"
       >
@@ -116,10 +138,10 @@ export function WhyUs() {
 
       <div className="section-shell relative z-10">
         <div
-          className="relative overflow-hidden rounded-[1.75rem] border border-[#006C35]/10 shadow-[0_24px_60px_-32px_rgba(8,25,56,0.28)] md:rounded-[2rem]"
+          className="relative overflow-hidden rounded-[1.75rem] border border-[#006C35]/18 shadow-[0_24px_60px_-32px_rgba(0,108,53,0.22)] md:rounded-[2rem]"
           style={{
             backgroundImage:
-              'linear-gradient(145deg, #ffffff 0%, #fffcf7 48%, color-mix(in oklab, #006C35 4%, white) 100%)',
+              'linear-gradient(145deg, #ffffff 0%, #f7fcf9 42%, color-mix(in oklab, #006C35 9%, white) 100%)',
           }}
         >
           {/* Fine gold accent line */}
@@ -184,9 +206,12 @@ export function WhyUs() {
                     background: 'color-mix(in oklab, #006C35 12%, transparent)',
                   }}
                 />
-                <img
+                <OptimizedImage
                   src="/assets/why-us-saudi-enterprise.png"
                   alt={t('whyUs.imageAlt')}
+                  kind="card"
+                  width={1200}
+                  height={900}
                   className="absolute inset-0 h-full w-full object-cover object-[55%_22%] transition duration-700 ease-out group-hover:scale-[1.02] sm:object-[52%_20%]"
                   loading="lazy"
                   decoding="async"
@@ -220,42 +245,46 @@ export function WhyUs() {
             </div>
           </div>
 
-          <Reveal
-            delay={420}
-            className="relative z-10 border-t border-[#006C35]/8 bg-white/60 px-4 py-3.5 backdrop-blur-sm sm:px-8"
+          <div
+            className="relative z-10 border-t border-[#006C35]/12"
+            style={{
+              backgroundColor: 'color-mix(in oklab, #006C35 6%, white)',
+            }}
           >
-            <ul className="flex flex-wrap items-center justify-center gap-y-2">
-              {STRIP.map((item, i) => {
-                const Icon = item.icon
-                return (
-                  <li key={item.key} className="flex items-center">
-                    {i > 0 ? (
-                      <span
-                        aria-hidden
-                        className="mx-2.5 hidden h-3 w-px sm:mx-3.5 sm:block"
-                        style={{
-                          backgroundColor:
-                            'color-mix(in oklab, #C5A572 45%, transparent)',
-                        }}
-                      />
-                    ) : null}
-                    <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5 text-[0.65rem] font-medium tracking-wide text-[color:var(--navy-deep)]/75 sm:text-[0.7rem]">
-                      {item.flag ? (
-                        <SaudiFlagIcon className="h-3.5 w-5 shrink-0" />
-                      ) : (
-                        <Icon
-                          className="h-3 w-3 shrink-0"
-                          style={{ color: SAUDI_GREEN }}
-                          aria-hidden="true"
+            <Reveal delay={420} className="px-4 py-3.5 sm:px-8">
+              <ul className="flex flex-wrap items-center justify-center gap-y-2">
+                {STRIP.map((item, i) => {
+                  const Icon = item.icon
+                  return (
+                    <li key={item.key} className="flex items-center">
+                      {i > 0 ? (
+                        <span
+                          aria-hidden
+                          className="mx-2.5 hidden h-3 w-px sm:mx-3.5 sm:block"
+                          style={{
+                            backgroundColor:
+                              'color-mix(in oklab, #C5A572 45%, transparent)',
+                          }}
                         />
-                      )}
-                      {t(`whyUs.strip.${item.key}`)}
-                    </span>
-                  </li>
-                )
-              })}
-            </ul>
-          </Reveal>
+                      ) : null}
+                      <span className="inline-flex items-center gap-1.5 px-1.5 py-0.5 text-[0.65rem] font-medium tracking-wide text-[color:var(--navy-deep)]/75 sm:text-[0.7rem]">
+                        {item.flag ? (
+                          <SaudiFlagIcon className="h-3.5 w-5 shrink-0" />
+                        ) : (
+                          <Icon
+                            className="h-3 w-3 shrink-0"
+                            style={{ color: SAUDI_GREEN }}
+                            aria-hidden="true"
+                          />
+                        )}
+                        {t(`whyUs.strip.${item.key}`)}
+                      </span>
+                    </li>
+                  )
+                })}
+              </ul>
+            </Reveal>
+          </div>
         </div>
       </div>
     </section>

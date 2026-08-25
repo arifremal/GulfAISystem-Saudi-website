@@ -1,5 +1,6 @@
 import { ArrowRight, Handshake, ShieldCheck } from 'lucide-react'
 import { useLanguage } from '../i18n'
+import { OptimizedImage } from './OptimizedImage'
 import { Reveal } from './Reveal'
 
 function BilingualIcon({ className }: { className?: string }) {
@@ -70,11 +71,15 @@ export function AboutIntro() {
           {/* Left: team image framed to keep left-side people in view */}
           <Reveal className="relative h-full min-h-0">
             <div className="media-frame h-full !rounded-[1.75rem]">
-              <img
+              <OptimizedImage
                 src="/assets/about-hero-team.webp"
                 alt={t('aboutIntro.imageAlt')}
+                kind="card"
+                width={1200}
+                height={900}
                 className="h-[360px] w-full object-cover object-[28%_center] md:h-[460px] lg:h-full lg:min-h-[460px]"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </Reveal>

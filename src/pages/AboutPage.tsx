@@ -11,6 +11,7 @@ import { AboutPeopleSections } from '../components/about/AboutPeopleSections'
 import { AboutVision2030Section } from '../components/about/AboutVision2030Section'
 import { AboutVisionSection } from '../components/about/AboutVisionSection'
 import { AboutWhySection } from '../components/about/AboutWhySection'
+import { OptimizedImage } from '../components/OptimizedImage'
 import { PageSeo } from '../components/PageSeo'
 import { Reveal } from '../components/about/Reveal'
 import { useLanguage } from '../i18n'
@@ -50,8 +51,11 @@ export function AboutPage() {
             <img
               src="/assets/about-hero-team-hq.png"
               alt=""
+              width={1920}
+              height={1080}
               className="about-hero-media h-full w-full object-cover object-[center_35%]"
               fetchPriority="high"
+              decoding="async"
             />
           </picture>
         </div>
@@ -102,11 +106,15 @@ export function AboutPage() {
         <div className="section-shell grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
           <Reveal className="h-full min-h-0">
             <div className="h-full min-h-[320px] overflow-hidden rounded-[1.5rem] border border-brand-secondary shadow-elegant sm:min-h-[420px] lg:min-h-full">
-              <img
+              <OptimizedImage
                 src="/assets/executive.png"
                 alt={t('about.who.imageAlt')}
+                kind="card"
+                width={900}
+                height={1200}
                 className="h-full w-full object-cover object-[center_18%]"
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </Reveal>

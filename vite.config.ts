@@ -5,4 +5,19 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   appType: 'spa',
+  build: {
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules/react-dom') || id.includes('node_modules/react/')) {
+            return 'react-vendor'
+          }
+          if (id.includes('node_modules/lucide-react')) {
+            return 'icons'
+          }
+        },
+      },
+    },
+  },
 })

@@ -111,7 +111,7 @@ export function ConsultationModal({
 
       <div
         ref={panelRef}
-        className={`relative z-10 flex max-h-[min(92vh,720px)] w-full max-w-lg flex-col overflow-hidden rounded-[1.5rem] border border-white/25 bg-[linear-gradient(145deg,rgba(8,25,56,0.82)_0%,rgba(0,101,210,0.55)_48%,rgba(10,31,77,0.88)_100%)] shadow-[0_28px_80px_-24px_rgba(2,11,29,0.85),0_0_0_1px_rgba(255,255,255,0.08)_inset] backdrop-blur-2xl transition-all duration-300 ease-out sm:max-w-xl ${
+        className={`relative z-10 flex max-h-[min(92vh,720px)] w-full max-w-lg flex-col overflow-hidden rounded-[1.5rem] border border-white/25 bg-[linear-gradient(145deg,rgba(8,25,56,0.82)_0%,rgba(0,101,210,0.55)_48%,rgba(10,31,77,0.88)_100%)] shadow-[0_28px_80px_-24px_rgba(2,11,29,0.85),0_0_0_1px_rgba(255,255,255,0.08)_inset] backdrop-blur-2xl transition-all duration-300 ease-out max-md:max-h-[min(90dvh,720px)] sm:max-w-xl ${
           visible ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-3 scale-[0.96] opacity-0'
         }`}
       >

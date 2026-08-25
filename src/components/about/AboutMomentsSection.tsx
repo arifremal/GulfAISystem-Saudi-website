@@ -1,6 +1,7 @@
 import { useId, useRef, useState } from 'react'
 import { Play } from 'lucide-react'
 import { useLanguage } from '../../i18n'
+import { OptimizedImage } from '../OptimizedImage'
 import { Reveal } from './Reveal'
 
 const MEDIA = {
@@ -16,7 +17,7 @@ const MEDIA = {
   },
   /* Centre Company Video */
   video: {
-    src: '/assets/about/about-us-video.mp4',
+    src: '/assets/about/about-us-video-web.mp4',
     poster: '/assets/about/video-thumbnail.png',
   },
   /* Right Top Partnership Image */
@@ -44,9 +45,12 @@ function MomentImage({
     <div
       className={`group relative min-h-0 overflow-hidden rounded-[1.15rem] bg-brand-secondary/40 ${className}`}
     >
-      <img
+      <OptimizedImage
         src={src}
         alt={alt}
+        kind="card"
+        width={800}
+        height={600}
         loading="lazy"
         decoding="async"
         className="h-full w-full object-cover object-center transition duration-700 ease-out group-hover:scale-[1.04]"
@@ -86,7 +90,7 @@ function CompanyVideo({
           id={titleId}
           className="absolute inset-0 h-full w-full object-contain object-center"
           poster={MEDIA.video.poster}
-          preload="metadata"
+          preload="none"
           playsInline
           controls={playing}
           controlsList="nodownload"

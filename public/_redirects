@@ -1,7 +1,24 @@
+# Force HTTPS preferred host when hosted on Netlify
+http://gulfaisystems.com.sa/*  https://gulfaisystems.com.sa/:splat  301!
+http://www.gulfaisystems.com.sa/*  https://gulfaisystems.com.sa/:splat  301!
+https://www.gulfaisystems.com.sa/*  https://gulfaisystems.com.sa/:splat  301!
+
+# Canonical path style: no trailing slash (except homepage)
+/*/  /:splat  301!
+
+# Legacy service URLs → current canonical paths
 /ai-capabilities/microsoft-copilot-training  /ai-training  301
-/ai-capabilities/ai-training                /ai-training  301
-/services/microsoft-copilot-training        /ai-training  301
-/services/ai-training                       /ai-training  301
-/services/private-ai-agents                 /ai-capabilities/private-ai-agents            301
-/services/operations-automation             /ai-capabilities/operations-automation        301
+/ai-capabilities/microsoft-copilot-training/ /ai-training  301
+/ai-capabilities/ai-training                 /ai-training  301
+/ai-capabilities/ai-training/                /ai-training  301
+/services/microsoft-copilot-training         /ai-training  301
+/services/microsoft-copilot-training/        /ai-training  301
+/services/ai-training                        /ai-training  301
+/services/ai-training/                       /ai-training  301
+/services/private-ai-agents                  /ai-capabilities/private-ai-agents  301
+/services/private-ai-agents/                 /ai-capabilities/private-ai-agents  301
+/services/operations-automation              /ai-capabilities/operations-automation  301
+/services/operations-automation/             /ai-capabilities/operations-automation  301
+
+# SPA fallback
 /*    /index.html   200

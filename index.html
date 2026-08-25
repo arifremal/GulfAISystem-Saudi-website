@@ -3,34 +3,127 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AI Transformation for Saudi Businesses | Gulf AI Systems</title>
+    <title>Enterprise AI Solutions for Saudi Businesses | Gulf AI Systems</title>
     <meta
       name="description"
-      content="Microsoft Copilot training, private AI agents, and operations automation for Saudi businesses. Built for construction, logistics, healthcare, manufacturing and beyond. Arabic + English."
+      content="Enterprise AI, private agents, ERP and automation solutions for Saudi businesses. Improve operations with Gulf AI Systems."
     />
+    <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#1a2f4f" />
     <link rel="canonical" href="https://gulfaisystems.com.sa/" />
     <meta property="og:site_name" content="Gulf AI Systems" />
-    <meta property="og:title" content="AI Transformation for Saudi Businesses | Gulf AI Systems" />
+    <meta property="og:locale" content="en_SA" />
+    <meta property="og:title" content="Enterprise AI Solutions for Saudi Businesses | Gulf AI Systems" />
     <meta
       property="og:description"
-      content="Microsoft Copilot training, private AI agents, and operations automation for Saudi businesses across construction, logistics, healthcare, and manufacturing."
+      content="Enterprise AI, private agents, ERP and automation solutions for Saudi businesses. Improve operations with Gulf AI Systems."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://gulfaisystems.com.sa/" />
-    <meta property="og:image" content="/og-image.jpg" />
+    <meta property="og:image" content="https://gulfaisystems.com.sa/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Enterprise AI Solutions for Saudi Businesses | Gulf AI Systems" />
+    <meta
+      name="twitter:description"
+      content="Enterprise AI, private agents, ERP and automation solutions for Saudi businesses. Improve operations with Gulf AI Systems."
+    />
+    <meta name="twitter:image" content="https://gulfaisystems.com.sa/og-image.jpg" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.webp" type="image/webp" />
+    <!-- LCP preload only on homepage (avoids unused-preload warnings on other routes) -->
+    <script>
+      (function () {
+        var path = location.pathname.replace(/\/+$/, '') || '/'
+        if (path !== '/') return
+        var l = document.createElement('link')
+        l.rel = 'preload'
+        l.as = 'image'
+        l.href = '/assets/responsive/hero-slide-1-1280.webp'
+        l.type = 'image/webp'
+        l.setAttribute(
+          'imagesrcset',
+          '/assets/responsive/hero-slide-1-640.webp 640w, /assets/responsive/hero-slide-1-960.webp 960w, /assets/responsive/hero-slide-1-1280.webp 1280w, /assets/responsive/hero-slide-1-1920.webp 1920w',
+        )
+        l.setAttribute('imagesizes', '100vw')
+        l.fetchPriority = 'high'
+        document.head.appendChild(l)
+      })()
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Non-blocking font CSS; display=swap already set by Google Fonts URL -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Gulf AI Systems",
+        "url": "https://gulfaisystems.com.sa",
+        "email": "info@gulfaisystems.com.sa",
+        "telephone": "+966535455063",
+        "logo": "https://gulfaisystems.com.sa/favicon.webp",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Level 26, King's Road Tower, King Abdul Aziz Road",
+          "addressLocality": "Jeddah",
+          "postalCode": "21499",
+          "addressCountry": "SA"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Gulf AI Systems",
+        "url": "https://gulfaisystems.com.sa/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Gulf AI Systems",
+          "url": "https://gulfaisystems.com.sa"
+        },
+        "inLanguage": ["en", "ar"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script src="https://saudia.aiagentichub.io/widget.js"></script>
+    <!-- Defer third-party chat until after first paint / idle -->
+    <script>
+      (function () {
+        function loadChatWidget() {
+          if (document.getElementById('gulf-ai-chat-widget')) return
+          var s = document.createElement('script')
+          s.id = 'gulf-ai-chat-widget'
+          s.src = 'https://saudia.aiagentichub.io/widget.js'
+          s.async = true
+          document.body.appendChild(s)
+        }
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadChatWidget, { timeout: 4000 })
+        } else {
+          window.addEventListener('load', function () {
+            setTimeout(loadChatWidget, 1500)
+          })
+        }
+      })()
+    </script>
   </body>
 </html>

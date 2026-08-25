@@ -3,6 +3,7 @@ import { ChevronDown, ChevronRight } from 'lucide-react'
 import { services, servicePages } from '../data/content'
 import { useLanguage } from '../i18n'
 import { Icon } from './Icon'
+import { OptimizedImage } from './OptimizedImage'
 import { Reveal } from './Reveal'
 
 const AUTO_INTERVAL_MS = 3000
@@ -134,13 +135,13 @@ export function Services() {
                       >
                         <Icon name={service.icon} className="h-4 w-4" />
                       </div>
-                      <span
-                        className={`text-xl font-semibold transition duration-300 md:text-2xl ${
+                      <h3
+                        className={`m-0 text-xl font-semibold transition duration-300 md:text-2xl ${
                           isActive ? 'text-brand-primary' : 'text-brand-muted'
                         }`}
                       >
                         {title}
-                      </span>
+                      </h3>
                     </div>
                     {isActive ? (
                       <ChevronDown className="h-5 w-5 shrink-0 text-brand-muted" />
@@ -213,23 +214,35 @@ export function Services() {
               imageVisible ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <img
+            <OptimizedImage
               src={gallery.top}
               alt={activeTitle}
+              kind="banner"
+              width={800}
+              height={600}
               className="col-start-1 row-start-1 h-full w-full rounded-2xl object-cover shadow-md"
               loading="lazy"
+              decoding="async"
             />
-            <img
+            <OptimizedImage
               src={gallery.bottom}
               alt={activeTitle}
+              kind="card"
+              width={800}
+              height={600}
               className="col-start-1 row-start-2 h-full w-full rounded-2xl object-cover shadow-md"
               loading="lazy"
+              decoding="async"
             />
-            <img
+            <OptimizedImage
               src={gallery.tall}
               alt={activeTitle}
+              kind="banner"
+              width={800}
+              height={1200}
               className="col-start-2 row-span-2 row-start-1 h-full w-full rounded-2xl object-cover shadow-md"
               loading="lazy"
+              decoding="async"
             />
           </div>
           </Reveal>

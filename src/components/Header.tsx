@@ -1,9 +1,12 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import { ArrowRight, ChevronDown } from 'lucide-react'
 import { industries, servicePages, services } from '../data/content'
 import { useLanguage } from '../i18n'
-import { ConsultationModal } from './ConsultationModal'
 import { Icon } from './Icon'
+
+const ConsultationModal = lazy(() =>
+  import('./ConsultationModal').then((m) => ({ default: m.ConsultationModal })),
+)
 
 type NavChild = {
   label: string
@@ -156,6 +159,10 @@ export function Header({ overlay = false }: HeaderProps) {
           <img
             src="/assets/logo.webp"
             alt={t('nav.logoAlt')}
+            width={256}
+            height={64}
+            decoding="async"
+            fetchPriority="high"
             className={`h-14 w-auto sm:h-16 ${isOverlayLook ? 'brightness-0 invert' : ''}`}
           />
         </a>
@@ -357,7 +364,11 @@ export function Header({ overlay = false }: HeaderProps) {
         </div>
       )}
 
-      <ConsultationModal open={consultOpen} onClose={() => setConsultOpen(false)} />
+      {consultOpen ? (
+        <Suspense fallback={null}>
+          <ConsultationModal open={consultOpen} onClose={() => setConsultOpen(false)} />
+        </Suspense>
+      ) : null}
     </header>
   )
 }

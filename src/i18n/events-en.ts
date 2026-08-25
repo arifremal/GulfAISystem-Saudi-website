@@ -27,7 +27,7 @@ export const eventsEn: TranslationDict = {
   'event.networking.meta.title':
     'Saudi Business Networking Event | Gulf AI Systems',
   'event.networking.meta.description':
-    'Explore highlights from a Gulf AI Systems business networking gathering focused on relationships, collaboration, and opportunities in Saudi Arabia.',
+    'Highlights from a Gulf AI Systems business networking event focused on relationships and opportunities in Saudi Arabia.',
   'event.networking.breadcrumb.events': 'Events',
   'event.networking.breadcrumb.current': 'Event Highlights',
   'event.networking.breadcrumbAria': 'Breadcrumb',

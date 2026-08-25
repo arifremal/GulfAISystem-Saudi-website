@@ -18,10 +18,17 @@ export const ORGANIZATION = {
   },
 } as const
 
+/** Canonical URLs use HTTPS apex host with no trailing slash (except homepage `/`). */
+export function canonicalizePath(path = '/'): string {
+  if (!path || path === '/') return '/'
+  const withSlash = path.startsWith('/') ? path : `/${path}`
+  const stripped = withSlash.replace(/\/+$/, '')
+  return stripped || '/'
+}
+
 export function absoluteUrl(path = '/'): string {
-  if (!path || path === '/') return `${SITE_ORIGIN}/`
-  const normalized = path.startsWith('/') ? path : `/${path}`
-  return `${SITE_ORIGIN}${normalized}`
+  const canonical = canonicalizePath(path)
+  return canonical === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${canonical}`
 }
 
 export type PageMetaInput = {

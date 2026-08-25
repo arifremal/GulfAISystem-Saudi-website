@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type ReactNode } from 'react'
 import {
   ArrowRight,
   ArrowUpRight,
@@ -28,10 +28,11 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import { servicePages, type ServicePageKey } from '../data/content'
 import { useLanguage } from '../i18n'
+import { PageSeo } from '../components/PageSeo'
+import { OptimizedImage } from '../components/OptimizedImage'
 import { Reveal } from '../components/Reveal'
 import { ConsultationModal } from '../components/ConsultationModal'
-
-const SITE_URL = 'https://gulfaisystems.com.sa'
+import { SITE_ORIGIN, breadcrumbSchema } from '../lib/seo'
 const FAQ_COUNT = 9
 const WHY_COUNT = 4
 const HOW_COUNT = 4
@@ -225,24 +226,30 @@ function ImagePlaceholder({
   comment,
   className = '',
   fill = false,
+  priority = false,
 }: {
   src: string
   alt: string
   comment: string
   className?: string
   fill?: boolean
+  priority?: boolean
 }) {
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      <img
+      <OptimizedImage
         src={src}
         alt={alt}
+        kind={priority ? 'banner' : 'card'}
+        width={1600}
+        height={900}
         className={
           fill
             ? 'absolute inset-0 h-full w-full object-cover'
             : 'h-full w-full object-cover'
         }
-        loading="lazy"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
         decoding="async"
       />
       <span className="sr-only">{comment}</span>
@@ -288,117 +295,57 @@ export function ServicePage({ service }: { service: ServicePageKey }) {
   const config = servicePages[service]
   const [openFaq, setOpenFaq] = useState<number | null>(1)
   const [consultOpen, setConsultOpen] = useState(false)
-  const pageUrl = `${SITE_URL}${config.path}`
+  const pageUrl = `${SITE_ORIGIN}${config.path}`
+  const title = t(k(service, 'meta.title'))
+  const description = t(k(service, 'meta.description'))
 
-  useEffect(() => {
-    const prevTitle = document.title
-    const metaDesc = document.querySelector('meta[name="description"]')
-    const prevDesc = metaDesc?.getAttribute('content') ?? ''
-    const canonical = document.querySelector('link[rel="canonical"]')
-    const prevCanonical = canonical?.getAttribute('href') ?? ''
-    const ogTitle = document.querySelector('meta[property="og:title"]')
-    const prevOgTitle = ogTitle?.getAttribute('content') ?? ''
-    const ogDesc = document.querySelector('meta[property="og:description"]')
-    const prevOgDesc = ogDesc?.getAttribute('content') ?? ''
-    const ogUrl = document.querySelector('meta[property="og:url"]')
-    const prevOgUrl = ogUrl?.getAttribute('content') ?? ''
-
-    const title = t(k(service, 'meta.title'))
-    const description = t(k(service, 'meta.description'))
-
-    document.title = title
-    metaDesc?.setAttribute('content', description)
-    canonical?.setAttribute('href', pageUrl)
-    ogTitle?.setAttribute('content', title)
-    ogDesc?.setAttribute('content', description)
-    ogUrl?.setAttribute('content', pageUrl)
-
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: Array.from({ length: FAQ_COUNT }, (_, i) => i + 1).map((n) => ({
-        '@type': 'Question',
-        name: t(k(service, `faq.${n}.q`)),
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: t(k(service, `faq.${n}.a`)),
-        },
-      })),
-    }
-
-    const breadcrumbSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: t('servicePage.shared.home'),
-          item: SITE_URL,
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: t('servicePage.shared.services'),
-          item: `${SITE_URL}/#services`,
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: t(k(service, 'breadcrumb')),
-          item: pageUrl,
-        },
-      ],
-    }
-
-    const serviceSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'Service',
-      name: t(k(service, 'hero.title')),
-      description,
-      url: pageUrl,
-      provider: {
-        '@type': 'Organization',
-        name: 'Gulf AI Systems',
-        url: SITE_URL,
+  const schemas = useMemo(
+    () => ({
+      [`service-${service}-faq-schema`]: {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: Array.from({ length: FAQ_COUNT }, (_, i) => i + 1).map((n) => ({
+          '@type': 'Question',
+          name: t(k(service, `faq.${n}.q`)),
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: t(k(service, `faq.${n}.a`)),
+          },
+        })),
       },
-      areaServed: {
-        '@type': 'Country',
-        name: 'Saudi Arabia',
+      [`service-${service}-breadcrumb-schema`]: breadcrumbSchema([
+        { name: t('servicePage.shared.home'), path: '/' },
+        { name: t('servicePage.shared.services'), path: '/#services' },
+        { name: t(k(service, 'breadcrumb')), path: config.path },
+      ]),
+      [`service-${service}-schema`]: {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: t(k(service, 'hero.title')),
+        description,
+        url: pageUrl,
+        provider: {
+          '@type': 'Organization',
+          name: 'Gulf AI Systems',
+          url: SITE_ORIGIN,
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'Saudi Arabia',
+        },
       },
-    }
-
-    const upsertJsonLd = (id: string, data: object) => {
-      let el = document.getElementById(id) as HTMLScriptElement | null
-      if (!el) {
-        el = document.createElement('script')
-        el.type = 'application/ld+json'
-        el.id = id
-        document.head.appendChild(el)
-      }
-      el.textContent = JSON.stringify(data)
-      return el
-    }
-
-    const faqEl = upsertJsonLd(`service-${service}-faq-schema`, faqSchema)
-    const crumbEl = upsertJsonLd(`service-${service}-breadcrumb-schema`, breadcrumbSchema)
-    const svcEl = upsertJsonLd(`service-${service}-schema`, serviceSchema)
-
-    return () => {
-      document.title = prevTitle
-      metaDesc?.setAttribute('content', prevDesc)
-      canonical?.setAttribute('href', prevCanonical)
-      ogTitle?.setAttribute('content', prevOgTitle)
-      ogDesc?.setAttribute('content', prevOgDesc)
-      ogUrl?.setAttribute('content', prevOgUrl)
-      faqEl.remove()
-      crumbEl.remove()
-      svcEl.remove()
-    }
-  }, [service, t, pageUrl])
+    }),
+    [service, t, config.path, description, pageUrl],
+  )
 
   return (
     <main className="overflow-x-hidden bg-white">
+      <PageSeo
+        title={title}
+        description={description}
+        path={config.path}
+        schemas={schemas}
+      />
       {/* 1 — Hero */}
       <section className="relative min-h-[72vh] overflow-hidden md:min-h-[78vh]">
         {/* Hero Image */}
@@ -408,10 +355,20 @@ export function ServicePage({ service }: { service: ServicePageKey }) {
             alt={t(k(service, 'hero.imageAlt'))}
             comment="Hero Image"
             className="h-full w-full"
+            priority
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020b1d]/92 via-[#020b1d]/68 to-[#020b1d]/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#020b1d]/75 via-transparent to-[#020b1d]/40" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020b1d]/50 via-[#0a1f4d]/22 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020b1d]/45 via-transparent to-[#020b1d]/12" />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 65% 55% at 72% 48%, rgba(20,71,230,0.22) 0%, rgba(56,189,248,0.08) 40%, transparent 72%)',
+          }}
+        />
+        <div className="pointer-events-none absolute -end-20 top-1/4 h-[26rem] w-[26rem] rounded-full bg-[#1447E6]/20 blur-3xl" />
+        <div className="pointer-events-none absolute start-1/4 bottom-0 h-56 w-[32rem] rounded-full bg-[#38bdf8]/12 blur-3xl" />
 
         <div className="relative mx-auto flex min-h-[72vh] max-w-7xl flex-col justify-end px-6 pb-14 pt-28 sm:justify-center sm:pb-20 md:min-h-[78vh] lg:px-8">
           <Reveal immediate className="max-w-3xl">
@@ -740,6 +697,43 @@ export function ServicePage({ service }: { service: ServicePageKey }) {
                 answer={t(k(service, `faq.${n}.a`))}
               />
             ))}
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Related internal links */}
+      <section className="section-y border-t border-brand-secondary/60 bg-white">
+        <div className="section-shell">
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <h2 className="section-title mx-auto text-center text-2xl md:text-3xl">
+              {t(k(service, 'related.title'))}
+            </h2>
+            <nav
+              aria-label={t(k(service, 'related.title'))}
+              className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-semibold"
+            >
+              {service !== 'training' && (
+                <a href={servicePages.training.path} className="text-[#1447E6] transition hover:underline">
+                  {t(k(service, 'related.training'))}
+                </a>
+              )}
+              {service !== 'agents' && (
+                <a href={servicePages.agents.path} className="text-[#1447E6] transition hover:underline">
+                  {t(k(service, 'related.agents'))}
+                </a>
+              )}
+              {service !== 'ops' && (
+                <a href={servicePages.ops.path} className="text-[#1447E6] transition hover:underline">
+                  {t(k(service, 'related.ops'))}
+                </a>
+              )}
+              <a href="/about" className="text-[#1447E6] transition hover:underline">
+                {t(k(service, 'related.about'))}
+              </a>
+              <a href="/contact" className="text-[#1447E6] transition hover:underline">
+                {t(k(service, 'related.contact'))}
+              </a>
+            </nav>
           </Reveal>
         </div>
       </section>

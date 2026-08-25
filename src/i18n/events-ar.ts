@@ -25,7 +25,7 @@ export const eventsAr: TranslationDict = {
   'event.networking.meta.title':
     'فعالية تواصل تجاري في السعودية | جلف إيه آي سيستمز',
   'event.networking.meta.description':
-    'استكشف أبرز لحظات تجمع تواصل تجاري من جلف إيه آي سيستمز يركز على العلاقات والتعاون والفرص في المملكة العربية السعودية.',
+    'أبرز لحظات تجمع تواصل تجاري من جلف إيه آي سيستمز يركز على العلاقات والفرص في السعودية.',
   'event.networking.breadcrumb.events': 'الفعاليات',
   'event.networking.breadcrumb.current': 'أبرز اللحظات',
   'event.networking.breadcrumbAria': 'مسار التنقل',

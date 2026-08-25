@@ -1,31 +1,81 @@
+# Gulf AI Systems — Apache / cPanel configuration
+# Preferred host: https://gulfaisystems.com.sa (non-www)
+# Preferred path style: no trailing slash (except homepage /)
+
 DirectoryIndex index.html
 
-# Never cache HTML — hashed JS/CSS filenames change every deploy.
-# Stale index.html causes: "Failed to load module script... MIME type of text/html"
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1) Force HTTPS → preferred apex host (single hop; avoids www chain)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+  RewriteRule ^ https://gulfaisystems.com.sa%{REQUEST_URI} [L,R=301]
+
+  # 2) Force non-www preferred hostname (already HTTPS)
+  RewriteCond %{HTTP_HOST} ^www\.gulfaisystems\.com\.sa$ [NC]
+  RewriteRule ^ https://gulfaisystems.com.sa%{REQUEST_URI} [L,R=301]
+
+  # 3) Remove trailing slash on non-file paths (avoid /about vs /about/ duplicates)
+  #    Preserve query string; skip real directories and the homepage root.
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^(.+)/$ /$1 [L,R=301,QSA]
+
+  # 4) Legacy service URL 301s → current canonical paths (no trailing slash; QSA)
+  RewriteRule ^ai-capabilities/microsoft-copilot-training/?$ /ai-training [L,R=301,QSA]
+  RewriteRule ^ai-capabilities/ai-training/?$ /ai-training [L,R=301,QSA]
+  RewriteRule ^services/microsoft-copilot-training/?$ /ai-training [L,R=301,QSA]
+  RewriteRule ^services/ai-training/?$ /ai-training [L,R=301,QSA]
+  RewriteRule ^services/private-ai-agents/?$ /ai-capabilities/private-ai-agents [L,R=301,QSA]
+  RewriteRule ^services/operations-automation/?$ /ai-capabilities/operations-automation [L,R=301,QSA]
+
+  # 5) SPA fallback — existing files/directories are served as-is
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType DEFLATE application/javascript application/x-javascript application/json
+  AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+<IfModule mod_brotli.c>
+  AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/xml text/css text/javascript
+  AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json application/xml
+  AddOutputFilterByType BROTLI_COMPRESS image/svg+xml
+</IfModule>
+
 <IfModule mod_headers.c>
+  # Never cache HTML — hashed JS/CSS filenames change every deploy.
   <FilesMatch "\.(html)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
   </FilesMatch>
 
-  # Homepage is often DirectoryIndex, not a .html URL — cover both.
   <If "%{REQUEST_URI} == '/'">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
     Header set Pragma "no-cache"
   </If>
 
-  <FilesMatch "\.(js|css|woff2|webp|png|jpg|jpeg|svg|ico)$">
+  <FilesMatch "\.(js|css|woff2|webp|avif|png|jpg|jpeg|svg|ico|gif)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
-</IfModule>
 
-# Serve the SPA for client-side routes (e.g. /about, /contact).
-# Without this, Apache returns 500 when ErrorDocument is misconfigured.
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
+  # Security response headers (skip if Cloudflare already injects equivalents)
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  # HSTS only on HTTPS responses
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # CSP Report-Only — audit third parties before enforcing
+  # Allowed: self, Google Fonts, Web3Forms, chat widget host, media/images HTTPS
+  Header always set Content-Security-Policy-Report-Only "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self' https://api.web3forms.com; img-src 'self' data: blob: https:; font-src 'self' data: https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://saudia.aiagentichub.io; connect-src 'self' https://api.web3forms.com https://saudia.aiagentichub.io wss://saudia.aiagentichub.io https://*.elevenlabs.io wss://*.elevenlabs.io; frame-src 'self' https://saudia.aiagentichub.io; media-src 'self' blob: https:; worker-src 'self' blob:"
 </IfModule>

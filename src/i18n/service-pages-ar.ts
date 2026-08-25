@@ -8,13 +8,13 @@ export const servicePagesAr: TranslationDict = {
 
   // ─── AI Training (Microsoft Copilot as a key module) ─────────────────────
   'servicePage.training.meta.title':
-    'تدريب الذكاء الاصطناعي في السعودية | جلف إيه آي سيستمز',
+    'تدريب الذكاء الاصطناعي للمؤسسات السعودية | جلف إيه آي سيستمز',
   'servicePage.training.meta.description':
-    'تدريب الذكاء الاصطناعي للمؤسسات الحديثة في السعودية. يشمل الأساسيات وChatGPT للأعمال وتدريب Microsoft Copilot وهندسة التوجيه والذكاء الاصطناعي التوليدي والاستخدام المسؤول.',
+    'تدريب عملي للفرق السعودية يشمل أساسيات الذكاء الاصطناعي وCopilot والتوجيه والأمن والتبني المسؤول في العمل.',
   'servicePage.training.breadcrumb': 'تدريب الذكاء الاصطناعي',
 
   'servicePage.training.hero.eyebrow': 'تدريب الذكاء الاصطناعي',
-  'servicePage.training.hero.title': 'تدريب الذكاء الاصطناعي للمؤسسات الحديثة',
+  'servicePage.training.hero.title': 'تدريب الذكاء الاصطناعي للمؤسسات السعودية الحديثة',
   'servicePage.training.hero.subtitle':
     'تدريب عملي على الذكاء الاصطناعي عبر منصات متعددة، بما في ذلك Microsoft Copilot، بالعربية والإنجليزية لسير العمل السعودي.',
   'servicePage.training.hero.ctaPrimary': 'احجز استشارة تدريب',
@@ -196,13 +196,13 @@ export const servicePagesAr: TranslationDict = {
 
   // ─── Private AI Agents ────────────────────────────────────────────────────
   'servicePage.agents.meta.title':
-    'وكلاء ذكاء اصطناعي خاصون للمؤسسات | واتساب وسير العمل | جلف إيه آي سيستمز',
+    'وكلاء ذكاء اصطناعي خاصون للمؤسسات | جلف إيه آي سيستمز',
   'servicePage.agents.meta.description':
-    'وكلاء ذكاء اصطناعي خاصون للمؤسسات السعودية، دعم واتساب واستخراج المستندات وأتمتة سير العمل بتحكم في البيانات.',
+    'انشر وكلاء ذكاء اصطناعي خاصين لدعم الأعمال الآمن والمعرفة الداخلية وأتمتة سير العمل والوصول لبيانات المؤسسات.',
   'servicePage.agents.breadcrumb': 'وكلاء ذكاء اصطناعي خاصون',
 
   'servicePage.agents.hero.eyebrow': 'وكلاء ذكاء اصطناعي للمؤسسات',
-  'servicePage.agents.hero.title': 'وكلاء خاصون لعملياتكم السعودية',
+  'servicePage.agents.hero.title': 'وكلاء خاصون لعمليات مؤسسات آمنة',
   'servicePage.agents.hero.subtitle':
     'وكلاء ثنائيو اللغة للرد على العملاء واستخراج المستندات وتشغيل سير العمل، مع بقاء بياناتكم تحت سيطرتكم.',
   'servicePage.agents.hero.ctaPrimary': 'ناقش حالة استخدام',
@@ -384,13 +384,13 @@ export const servicePagesAr: TranslationDict = {
 
   // ─── Operations Automation ────────────────────────────────────────────────
   'servicePage.ops.meta.title':
-    'أتمتة العمليات | ERP والمشتريات وطلبات العروض والزكاة | جلف إيه آي سيستمز',
+    'أتمتة عمليات الذكاء الاصطناعي للأعمال السعودية | جلف إيه آي سيستمز',
   'servicePage.ops.meta.description':
-    'أتمتة عمليات للمؤسسات السعودية: ERP حسب القطاع، مشتريات وطلبات عروض، ومسارات مالية متوافقة مع الزكاة.',
+    'اربط ERP والمشتريات وسير العمل التشغيلي بأتمتة ذكاء اصطناعي عملية مصممة لمتطلبات الأعمال السعودية.',
   'servicePage.ops.breadcrumb': 'أتمتة العمليات',
 
   'servicePage.ops.hero.eyebrow': 'أتمتة ERP وسير العمل',
-  'servicePage.ops.hero.title': 'أتمتة عمليات للمؤسسات السعودية',
+  'servicePage.ops.hero.title': 'أتمتة عمليات الذكاء الاصطناعي للأعمال السعودية',
   'servicePage.ops.hero.subtitle':
     'اربطوا ERP والمشتريات وطلبات العروض والمالية، وقت أقل في المتابعة اليدوية ووقت أكثر لإدارة العمل.',
   'servicePage.ops.hero.ctaPrimary': 'احجز مراجعة عمليات',

@@ -675,6 +675,15 @@ body {
   }
 }
 
+@keyframes eventLightboxFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes float-soft {
   0%,
   100% {
@@ -963,5 +972,33 @@ html.lang-ar .why-us-accent-line {
   .why-us-accent-line,
   .why-us-image.is-visible {
     animation: none;
+  }
+}
+
+/* —— Mobile-only polish (desktop breakpoints unchanged) —— */
+@media (max-width: 767px) {
+  .section-y {
+    padding-block: 3.75rem;
+  }
+
+  .section-shell {
+    padding-inline: 1.25rem;
+  }
+
+  .btn-cta {
+    min-height: 2.75rem;
+  }
+
+  .card-image {
+    min-height: 220px;
+  }
+
+  .industries-slider {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .industries-slider::-webkit-scrollbar {
+    display: none;
   }
 }

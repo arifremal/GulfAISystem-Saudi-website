@@ -45,7 +45,7 @@ function PersonAvatar({ alt, src }: { alt: string; src?: string }) {
   return (
     <div className="mx-auto mb-6 flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden rounded-full bg-muted ring-4 ring-[color:var(--brand)]/40">
       {src ? (
-        <img src={src} alt={alt} loading="lazy" className="h-full w-full object-cover object-center" />
+        <img src={src} alt={alt} width={160} height={160} loading="lazy" decoding="async" className="h-full w-full object-cover object-center" />
       ) : (
         <div
           className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[color:var(--brand-sky)]/50 to-white"

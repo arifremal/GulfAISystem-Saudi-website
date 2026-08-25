@@ -380,7 +380,7 @@ export const en: TranslationDict = {
   'about.hero.ctaContact': 'Contact Us',
   'about.meta.title': 'About Gulf AI Systems | Enterprise AI Partner in Saudi Arabia',
   'about.meta.description':
-    'Learn how Gulf AI Systems helps Saudi organisations adopt practical AI, private agents, ERP and automation with secure enterprise delivery.',
+    'Learn how Gulf AI Systems helps Saudi organisations adopt practical AI, private agents, ERP and automation securely.',
   'about.who.title': 'A Trusted AI and ERP Partner in the Kingdom',
   'about.who.body':
     'Gulf AI Systems helps Saudi organisations adopt practical AI, intelligent automation, ERP, and digital transformation solutions designed for secure, scalable, and bilingual enterprise environments.',

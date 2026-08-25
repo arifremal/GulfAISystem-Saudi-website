@@ -1,5 +1,6 @@
 import { problemKeys } from '../data/content'
 import { useLanguage } from '../i18n'
+import { OptimizedImage } from './OptimizedImage'
 import { Reveal } from './Reveal'
 
 export function Problem() {
@@ -21,11 +22,15 @@ export function Problem() {
         <div className="grid auto-rows-[minmax(240px,auto)] gap-4 md:gap-5 lg:grid-cols-3 lg:grid-rows-2 lg:gap-6">
           {/* Wide image card — top left */}
           <Reveal className="group relative min-h-[280px] overflow-hidden rounded-[1.75rem] lg:col-span-2 lg:row-start-1" as="article">
-            <img
+            <OptimizedImage
               src="/assets/paperwork.webp"
               alt={t(`problem.${hoursLost}.title`)}
+              kind="card"
+              width={1200}
+              height={800}
               className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
               loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/90 via-brand-deep/35 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 p-7 md:p-9">
@@ -73,11 +78,15 @@ export function Problem() {
             className="relative min-h-[280px] overflow-hidden rounded-[1.75rem] bg-brand-deep lg:col-span-2 lg:col-start-2 lg:row-start-2"
           >
             <div className="pointer-events-none absolute inset-y-0 right-0 w-[42%] opacity-40 sm:opacity-100 sm:w-[40%] md:w-[38%]">
-              <img
+              <OptimizedImage
                 src="/assets/executive.png"
                 alt={t(`problem.${competitors}.title`)}
+                kind="card"
+                width={800}
+                height={1000}
                 className="h-full w-full object-cover object-[center_18%]"
                 loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-r from-brand-deep via-brand-deep/55 to-transparent" />
             </div>

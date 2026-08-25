@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type FormEvent, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties, type FormEvent, type ReactNode } from 'react'
 import type { LucideIcon } from 'lucide-react'
 import {
   ArrowRight,
@@ -29,11 +29,13 @@ import {
   WHATSAPP_URL,
 } from '../lib/site-meta'
 import { ConsultationModal } from '../components/ConsultationModal'
+import { OptimizedImage } from '../components/OptimizedImage'
+import { PageSeo } from '../components/PageSeo'
 import { Reveal } from '../components/Reveal'
 import { useLanguage } from '../i18n'
+import { ORGANIZATION, SITE_ORIGIN, breadcrumbSchema } from '../lib/seo'
 
-const CONTACT_EMAIL = 'info@gulfaisystems.com.sa'
-const CONTACT_URL = 'https://gulfaisystems.com.sa/contact'
+const CONTACT_EMAIL = ORGANIZATION.email
 const HERO_IMAGE = '/assets/contact/contact-hero-banner.png'
 const FORM_IMAGE = '/assets/contact/contact-form.png'
 
@@ -302,90 +304,48 @@ export function ContactPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(1)
   const [demoOpen, setDemoOpen] = useState(false)
 
-  useEffect(() => {
-    const prevTitle = document.title
-    const metaDesc = document.querySelector('meta[name="description"]')
-    const prevDesc = metaDesc?.getAttribute('content') ?? ''
-    const canonical = document.querySelector('link[rel="canonical"]')
-    const prevCanonical = canonical?.getAttribute('href') ?? ''
-    const ogTitle = document.querySelector('meta[property="og:title"]')
-    const prevOgTitle = ogTitle?.getAttribute('content') ?? ''
-    const ogDesc = document.querySelector('meta[property="og:description"]')
-    const prevOgDesc = ogDesc?.getAttribute('content') ?? ''
-    const ogUrl = document.querySelector('meta[property="og:url"]')
-    const prevOgUrl = ogUrl?.getAttribute('content') ?? ''
+  const title = t('contact.meta.title')
+  const description = t('contact.meta.description')
 
-    const title = t('contact.meta.title')
-    const description = t('contact.meta.description')
-
-    document.title = title
-    metaDesc?.setAttribute('content', description)
-    canonical?.setAttribute('href', CONTACT_URL)
-    ogTitle?.setAttribute('content', title)
-    ogDesc?.setAttribute('content', description)
-    ogUrl?.setAttribute('content', CONTACT_URL)
-
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: FAQ_ALL.map((n) => ({
-        '@type': 'Question',
-        name: t(`contact.faq.${n}.q`),
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: t(`contact.faq.${n}.a`),
-        },
-      })),
-    }
-
-    const contactSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'ContactPage',
-      name: title,
-      description,
-      url: CONTACT_URL,
-      mainEntity: {
-        '@type': 'Organization',
-        name: 'Gulf AI Systems',
-        url: 'https://gulfaisystems.com.sa',
-        email: CONTACT_EMAIL,
-        telephone: CALL_PHONE_E164,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: "Level 26, King's Road Tower, King Abdul Aziz Road",
-          addressLocality: 'Jeddah',
-          postalCode: '21499',
-          addressCountry: 'SA',
+  const schemas = useMemo(
+    () => ({
+      'contact-faq-schema': {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: FAQ_ALL.map((n) => ({
+          '@type': 'Question',
+          name: t(`contact.faq.${n}.q`),
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: t(`contact.faq.${n}.a`),
+          },
+        })),
+      },
+      'contact-page-schema': {
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: title,
+        description,
+        url: `${SITE_ORIGIN}/contact`,
+        mainEntity: {
+          '@type': 'Organization',
+          name: ORGANIZATION.name,
+          url: ORGANIZATION.url,
+          email: CONTACT_EMAIL,
+          telephone: CALL_PHONE_E164,
+          address: {
+            '@type': 'PostalAddress',
+            ...ORGANIZATION.address,
+          },
         },
       },
-    }
-
-    const upsertJsonLd = (id: string, data: object) => {
-      let el = document.getElementById(id) as HTMLScriptElement | null
-      if (!el) {
-        el = document.createElement('script')
-        el.type = 'application/ld+json'
-        el.id = id
-        document.head.appendChild(el)
-      }
-      el.textContent = JSON.stringify(data)
-      return el
-    }
-
-    const faqEl = upsertJsonLd('contact-faq-schema', faqSchema)
-    const contactEl = upsertJsonLd('contact-page-schema', contactSchema)
-
-    return () => {
-      document.title = prevTitle
-      metaDesc?.setAttribute('content', prevDesc)
-      canonical?.setAttribute('href', prevCanonical)
-      ogTitle?.setAttribute('content', prevOgTitle)
-      ogDesc?.setAttribute('content', prevOgDesc)
-      ogUrl?.setAttribute('content', prevOgUrl)
-      faqEl.remove()
-      contactEl.remove()
-    }
-  }, [t])
+      'contact-breadcrumb-schema': breadcrumbSchema([
+        { name: t('servicePage.shared.home'), path: '/' },
+        { name: t('nav.contact'), path: '/contact' },
+      ]),
+    }),
+    [t, title, description],
+  )
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -442,18 +402,38 @@ export function ContactPage() {
 
   return (
     <main className="overflow-x-hidden bg-white">
+      <PageSeo
+        title={title}
+        description={description}
+        path="/contact"
+        schemas={schemas}
+      />
       {/* Hero */}
       <section className="relative min-h-[78vh] overflow-hidden sm:min-h-[84vh]">
         <div className="absolute inset-0">
-          <img
+          <OptimizedImage
             src={HERO_IMAGE}
             alt=""
+            kind="banner"
+            width={1920}
+            height={1080}
             className="about-hero-media h-full w-full object-cover object-center"
             fetchPriority="high"
+            loading="eager"
+            decoding="async"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#020b1d]/92 via-[#020b1d]/68 to-[#020b1d]/35" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#020b1d]/85 via-transparent to-[#020b1d]/45" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#020b1d]/50 via-[#0a1f4d]/22 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020b1d]/45 via-transparent to-[#020b1d]/12" />
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(ellipse 65% 55% at 72% 48%, rgba(20,71,230,0.22) 0%, rgba(56,189,248,0.08) 40%, transparent 72%)',
+          }}
+        />
+        <div className="pointer-events-none absolute -end-20 top-1/4 h-[26rem] w-[26rem] rounded-full bg-[#1447E6]/20 blur-3xl" />
+        <div className="pointer-events-none absolute start-1/4 bottom-0 h-56 w-[32rem] rounded-full bg-[#38bdf8]/12 blur-3xl" />
 
         <div className="relative mx-auto flex min-h-[78vh] max-w-7xl flex-col justify-end px-6 pb-16 pt-28 sm:min-h-[84vh] sm:justify-center sm:pb-24 lg:px-8">
           <Reveal immediate className="max-w-2xl">
@@ -640,9 +620,10 @@ export function ContactPage() {
 
             <Reveal delay={160} className="relative hidden min-h-[480px] lg:block">
               <div className="relative h-full overflow-hidden rounded-[1.75rem]">
-                <img
+                <OptimizedImage
                   src={FORM_IMAGE}
                   alt={t('contact.imageAlt')}
+                  kind="card"
                   width={900}
                   height={1200}
                   loading="lazy"

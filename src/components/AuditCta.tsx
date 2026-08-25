@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { ArrowRight } from 'lucide-react'
 import { useLanguage } from '../i18n'
-import { ConsultationModal } from './ConsultationModal'
 import { Reveal } from './Reveal'
+
+const ConsultationModal = lazy(() =>
+  import('./ConsultationModal').then((m) => ({ default: m.ConsultationModal })),
+)
 
 export function AuditCta() {
   const { t } = useLanguage()
@@ -37,7 +40,11 @@ export function AuditCta() {
         </Reveal>
       </section>
 
-      <ConsultationModal open={open} onClose={() => setOpen(false)} />
+      {open ? (
+        <Suspense fallback={null}>
+          <ConsultationModal open={open} onClose={() => setOpen(false)} />
+        </Suspense>
+      ) : null}
     </>
   )
 }

@@ -1,0 +1,10 @@
+# Gulf AI Systems - https://gulfaisystems.com.sa/
+
+User-agent: *
+Allow: /
+
+# Do not block CSS, JS, images, or fonts required for rendering.
+# Disallow only non-public API paths if introduced later.
+Disallow: /api/
+
+Sitemap: https://gulfaisystems.com.sa/sitemap.xml
